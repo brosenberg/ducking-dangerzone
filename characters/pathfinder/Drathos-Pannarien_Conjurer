@@ -3,7 +3,7 @@ Drathos Pannarien - Half-Elf Conjurer
 Eyes: White - Skin: Mauve - Hair: Grey
 Str 8 - Dex 12 - Con 14 - Wis 10 - Int 18 - Cha 10
 Fort +3 - Will +2 - Refl +1
-8 HP - AC 11 - CMB -1 - CMD 10 - Init +1
+8 HP - AC 11 - CMB -1 - CMD 10 - Init +5
 
 Summoner's Charm (Su)
 Whenever you cast a conjuration (summoning) spell, increase the duration by a number of rounds equal to 1/2 your wizard level (minimum 1). This increase is not doubled by Extend Spell. At 20th level, you can change the duration of all summon monster spells to permanent. You can have no more than one summon monster spell made permanent in this way at one time. If you designate another summon monster spell as permanent, the previous spell immediately ends.
@@ -27,27 +27,11 @@ Keen Senses: Half-elves receive a +2 racial bonus on Perception checks.
 Languages: Abyssal, Aklo, Common, Draconic, Elven, Undercommon
 
 Skills
-Appraise
-Craft (Alchemy)
-Knowledge (Arcana)
-Knowledge (History)
-Knowledge (Planes)
-Knowledge (Religion)
-Spellcraft
+Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (History) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8
 
-Familiar - Greensting Scorpion - Grenix
-
-Feats
-    Augment Summoning
-    Scribe Scroll
-
-Traits
-    Arcane Graduate - Regional (+2 concentration when casting arcane spells)
-    Diabolical Dabbler - Magic (fiendish summons get +1hp/HD)
-    Forlorn - Racial (+1 Fortitude)
-
-Drawbacks
-    Hedonistic (Must have an hour of entertainment or pleasure before resting, or wake up fatigued)
+Feats: Augment Summoning, Scribe Scroll
+Traits: Arcane Graduate - Regional (+2 concentration when casting arcane spells), Diabolical Dabbler - Magic (fiendish summons get +1hp/HD), Forlorn - Racial (+1 Fortitude)
+Drawbacks: Hedonistic (Must have an hour of entertainment or pleasure before resting, or wake up fatigued)
 
 2gp
 Wizard's Kit
@@ -111,3 +95,15 @@ Mage Armor - VSF SA, touch, 1 hour
 Blood Money - VS swift, 0 ft, inst.
 Polypurpose Panacea - S SA, personal, special
 Summon Monster I - VSF 1 round, 25 ft, 2 rounds
+
+Familiar - Greensting Scorpion - Grenix
+Init +3; Senses darkvision 60 ft.; Perception +4
+AC 19, touch 15, flat-footed 16 (+3 Dex, +4 natural, +2 size)
+HP 4, Fort +2, Ref +3, Will +2, Immune mind-affecting effects
+Speed 30 ft.
+Melee sting +5 (1d2–4 plus poison)
+Sting—injury; save Fort DC 10; frequency 1/round for 6 rounds; effect sickened for 1 round; cure 1 save.
+Str 3, Dex 16, Con 10, Int 6, Wis 10, Cha 2
+Base Atk +0; CMB +1; CMD 7 (19 vs. trip)
+Feats: improved evasion, share spells, empathic link, Weapon Finesse
+Skills: Climb +7, Perception +4, Stealth +15; Racial Modifiers +4 Climb, +4 Perception, +4 Stealth
