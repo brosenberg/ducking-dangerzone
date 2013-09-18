@@ -26,8 +26,7 @@ Keen Senses: Half-elves receive a +2 racial bonus on Perception checks.
 
 Languages: Abyssal, Aklo, Common, Draconic, Elven, Undercommon
 
-Skills
-Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (History) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8
+Skills: Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (History) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8
 
 Feats: Augment Summoning, Scribe Scroll
 Traits: Arcane Graduate - Regional (+2 concentration when casting arcane spells), Diabolical Dabbler - Magic (fiendish summons get +1hp/HD), Forlorn - Racial (+1 Fortitude)
@@ -96,14 +95,15 @@ Blood Money - VS swift, 0 ft, inst.
 Polypurpose Panacea - S SA, personal, special
 Summon Monster I - VSF 1 round, 25 ft, 2 rounds
 
-Familiar - Greensting Scorpion - Grenix
-Init +3; Senses darkvision 60 ft.; Perception +4
-AC 19, touch 15, flat-footed 16 (+3 Dex, +4 natural, +2 size)
-HP 4, Fort +2, Ref +3, Will +2, Immune mind-affecting effects
-Speed 30 ft.
-Melee sting +5 (1d2–4 plus poison)
-Sting—injury; save Fort DC 10; frequency 1/round for 6 rounds; effect sickened for 1 round; cure 1 save.
-Str 3, Dex 16, Con 10, Int 6, Wis 10, Cha 2
-Base Atk +0; CMB +1; CMD 7 (19 vs. trip)
-Feats: improved evasion, share spells, empathic link, Weapon Finesse
-Skills: Climb +7, Perception +4, Stealth +15; Racial Modifiers +4 Climb, +4 Perception, +4 Stealth
+Familiar - Sea Krait - Grenix
+Init +3; Senses low-light vision, scent; Perception +9
+AC 16, touch 15, flat-footed 13 (+3 Dex, +1 natural, +2 size)
+hp 3 (1d8–1), Fort +1, Ref +5, Will +1
+Speed 20 ft., climb 20 ft., swim 20 ft.
+Melee bite +5 (1d2–2 plus poison)
+injury; save Fort DC 9; frequency 1/round for 6 rounds; effect 1d2 Con damage; cure 1 save.
+Str 4, Dex 17, Con 8, Int 1, Wis 13, Cha 2
+Base Atk +0; CMB +1; CMD 8 (can't be tripped)
+Feats Weapon Finesse
+Skills Climb +11, Perception +9, Stealth +15, Swim +11; Racial Modifiers +4 Perception, +4 Stealth
+Special: Alertness, improved evasion, share spells, empathic link
