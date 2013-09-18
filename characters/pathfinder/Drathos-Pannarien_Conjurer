@@ -2,31 +2,24 @@ Drathos Pannarien - Half-Elf Conjurer
 6 ft. 0 in. 160 lbs 28 years old
 Eyes: White - Skin: Mauve - Hair: Grey
 Str 8 - Dex 12 - Con 14 - Wis 10 - Int 18 - Cha 10
-Fort +5 - Will +2 - Refl +1
+Fort +5 - Will +2, +4 vs. enchantments - Refl +1
 8 HP - AC 11 - CMB -1 - CMD 10 - Init +1
+Perception +2 (+4), Darkvision 60'
 
 Summoner's Charm (Su)
 Whenever you cast a conjuration (summoning) spell, increase the duration by a number of rounds equal to 1/2 your wizard level (minimum 1). This increase is not doubled by Extend Spell. At 20th level, you can change the duration of all summon monster spells to permanent. You can have no more than one summon monster spell made permanent in this way at one time. If you designate another summon monster spell as permanent, the previous spell immediately ends.
 
-Acid Dart (Sp) - (1d6+1, 7/day)
-As a standard action you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. The acid dart deals 1d6 points of acid damage + 1 for every two wizard levels you possess. You can use this ability a number of times per day equal to 3 + your Intelligence modifier. This attack ignores spell resistance.
+Acid Dart (Sp):  Standard Action (1d6+(level2), (3+int)/day) No SR
+Dancing Lights 1/day CL=HD
+Darkness 1/day CL=HD
+Faerie Fire 1/day CL=HD
+Dimensional Steps (Sp): At 8th level, Teleport 30*(level) feet as standard action. Does not provoke AoO. Can bring other creatures, but they expend distance as well.
 
-Dimensional Steps (Sp)
-At 8th level, you can use this ability to teleport up to 30 feet per wizard level per day as a standard action. This teleportation must be used in 5-foot increments and such movement does not provoke an attack of opportunity. You can bring other willing creatures with you, but you must expend an equal amount of distance for each additional creature brought with you.
-
-Drow-Blooded: Some half-elves born of drow parents exhibit more drow traits than others—particularly many of the physical features of the drow—and have darkvision 60 feet and light blindness. This racial trait replaces the low-light vision racial trait.
-
-Drow Magic: A few half-elves with drow ancestry exhibit the innate magic of that race. Half-elves with this trait have drow blood somewhere in their background, and can cast dancing lights, darkness, and faerie fire each once per day, using the half-elf's character level as the caster level for these spell-like abilities. This racial trait replaces the adaptability and multitalented racial traits.
-
-Elf Blood: Half-elves count as both elves and humans for any effect related to race.
-
-Elven Immunities: Half-elves are immune to magic sleep effects and gain a +2 racial saving throw bonus against enchantment spells and effects.
-
-Keen Senses: Half-elves receive a +2 racial bonus on Perception checks.
+Racial Abilities: Drow-Blooded (darkvision 60', light blindness), Drow Magic, Elf Blood, Elven Immunities, Keen Senses
 
 Languages: Abyssal, Aklo, Common, Draconic, Elven, Undercommon
 
-Skills: Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (History) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8
+Skills: Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (History) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8, Perception +2 (+4)
 
 Feats: Augment Summoning, Scribe Scroll
 Traits: Arcane Graduate - Regional (+2 concentration when casting arcane spells), Diabolical Dabbler - Magic (fiendish summons get +1hp/HD), Forlorn - Racial (+1 Fortitude)
@@ -54,8 +47,10 @@ Reversible Cloak
 Mask
 Longspear
 Dagger
+Shortbow
+Soul Speaker: Magic Mouth 1/day CL3
 
-Spells per Day:
+Spells Memorized:
 0: 3
     Detect Magic
     Resistance
@@ -107,3 +102,11 @@ Base Atk +0; CMB +1; CMD 8 (can't be tripped)
 Feats Weapon Finesse
 Skills Climb +11, Perception +9, Stealth +15, Swim +11; Racial Modifiers +4 Perception, +4 Stealth
 Special: Alertness, improved evasion, share spells, empathic link
+
+Adventure Notes:
+    Falcon's Hollows - Ruled by lumber barons
+    Hired by Laurel the Apothecary to find a cure for town's Black Scour Taint infection
+    Cure needs:
+    X Elderwood Moss (At giant tree)
+    X Pickled Rat's Tail (At Witch's Hut)
+    _ 7x Ironbloom Mushrooms (At Dwarf Ruin)
