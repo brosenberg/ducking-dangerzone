@@ -1,16 +1,16 @@
 Drathos Pannarien - Half-Elf  2 Conjurer   3001xp
 6 ft. 0 in. 160 lbs 28 years old
 Eyes: White  Skin: Mauve  Hair: Grey
-Str 6 [8]  Dex 12  Con 12 [14]  Wis 10  Int 18  Cha 10
-Fort +4 [+5]  Will +3, +4 vs. enchantments  Refl +1
-11 [13] HP  AC 11  CMB -2  CMD 9  Init +1
+Str 6 [8]  Dex 12  Con 9 [14]  Wis 10  Int 18  Cha 10
+Fort +2 [+5]  Will +3, +4 vs. enchantments  Refl +1
+7 [13] HP  AC 11  CMB -2  CMD 9  Init +1
 Perception +4, Darkvision 60'
 
 -2 Longspear 1d8-2/x3 / -2 Dagger 1d4-2 / +1 Shortbow 1d6/x3
 
 Hero Points: 1
 
-Addicted to Aether - 2 Con damage
+Addicted to Aether - 3 Con damage
 -2 Con, -2 Str penalty
 
 Summoner's Charm (Su)
@@ -26,13 +26,26 @@ Racial Abilities: Drow-Blooded (darkvision 60', light blindness), Drow Magic, El
 
 Languages: Abyssal, Aklo, Common, Draconic, Elven, Undercommon
 
-Skills: Appraise 8, Craft (Alchemy) 8, Knowledge (Arcana) 8, Knowledge (Dungeoneering) 8, Knowledge (Engineering) 8, Knowledge (History) 8, Knowledge (Local) 8, Knowledge (Nature) 8, Knowledge (Nobility) 8, Knowledge (Planes) 8, Knowledge (Religion) 8, Spellcraft 8, Perception +2 (+4)
+Skills:
+ Appraise                  8
+ Craft (Alchemy)           8
+ Knowledge (Arcana)        8
+ Knowledge (Dungeoneering) 8
+ Knowledge (Engineering)   8
+ Knowledge (History)       8
+ Knowledge (Local)         8
+ Knowledge (Nature)        8
+ Knowledge (Nobility)      8
+ Knowledge (Planes)        8
+ Knowledge (Religion)      8
+ Spellcraft                8
+ Perception          +2 (+4)
 
 Feats: Augment Summoning, Scribe Scroll
 Traits: Arcane Graduate - Regional (+2 concentration when casting arcane spells), Diabolical Dabbler - Magic (fiendish summons get +1hp/HD), Forlorn - Racial (+1 Fortitude)
 Drawbacks: Hedonistic (Must have an hour of entertainment or pleasure before resting, or wake up fatigued)
 
-51gp
+83gp
 Wizard's Kit - Backpack, Bedroll, Belt Pouch, Flint and Steel, Ink, Inkpen, Iron pot, Mess kit, Soap, Spell component pouch, Torches x10, Trail rations x5, Waterskin
 Spellbook
 Aether - 11 doses
@@ -42,14 +55,15 @@ Mask
 Longspear
 Dagger
 Shortbow
+Helen the Doll
 
 Spells Memorized:
-0: 4
+0: 4 (DC 14)
     Detect Magic
     Mage Hand
     Message
     Prestidigitation
-1: 3+1
+1: 3+1 (DC 15)
     Color Spray
     Enlarge Person
     Polypurpose Panacea
@@ -97,5 +111,9 @@ injury; save Fort DC 9; frequency 1/round for 6 rounds; effect 1d2 Con damage; c
 Str 4, Dex 17, Con 8, Int 1, Wis 13, Cha 2
 Base Atk +0; CMB +1; CMD 8 (can't be tripped)
 Feats Weapon Finesse
-Skills Climb +11, Perception +9, Stealth +15, Swim +11; Racial Modifiers +4 Perception, +4 Stealth
+Skills Climb +11
+ Perception +9
+ Stealth +15
+ Swim +11; Racial Modifiers +4 Perception
+ +4 Stealth
 Special: Alertness, improved evasion, share spells, empathic link
