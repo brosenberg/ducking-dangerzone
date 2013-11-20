@@ -4,15 +4,17 @@ Experience 9517
 Age: 21  Height: 6'0"  Weight: 155 lbs
 Deity: Lord of Laws
 
-Str 8  Dex 12  Con 10  Wis 10  Int 14  Cha 19
+Str 8  Dex 12  Con 10  Wis 10  Int 14  Cha 21
 25hp
-AC 15  FF 14  Touch 11
-CMB +2  CMD 13
-Fort +1  Refl +2  Will +4, +2 vs. Enchantment
+AC 17  Touch 11  FF 16
+CMB +2  CMD 14
+Fort +1  Refl +3  Will +4, +2 vs. Enchantment
+Immune to Dragon Fear
 Speed 30, Initiative +1
 Attacks: +2 Cold Iron Heavy Mace 1d8-1/x2
          +2 Obsidian Dagger 1d4-1 19-20/x2
-         +4 Light Crossbow 1d6 19-20/x2
+         +3 Heart Ripper Blade 1d4 19-20/x2
+         +5 Light Crossbow 1d6 19-20/x2
 
 Abilities: Arcane Training, Skill Focus (Perception), Life Link, Summon Monster II (7/day - 3 minutes), Bond Senses (2 rounds), Shield ALly
 Traits: Extremely Fashionable (+1 Bluff, +1 Diplomacy, +1 Intimidate, Intimidate Class Skill)
@@ -41,15 +43,21 @@ Languages: Abyssal, Aklo, Common, Elven, Infernal
 Feats: Extra Evolution, Resilient Eidolon
 
 Equipment:
+Wand of Touch of Fatigue (CL2) 50 Charges
+Wand of Enlarge Person (CL3) 50 Charges
+Wand of Detect Secret Doors (CL?) 49 Charges
+Scroll of Acid Splash
+3x Scroll of Sleep
+* Ring of Mind Shielding
+* Crown of the Kobold King (+2 CHA, +2 Nat. Armor, +1 Sorc CL, Immune Dragon Fear)
 Leather Lamellar
 Cold Iron Heavy Mace
 Obsidian Dagger
 Light Crossbow
-28 bolts
+26 bolts
 Sleeves of Many Garments
 Traveler's Outfit
 Ioun Torch
-Ring of Mind Shielding
 Belt Pouch
   Chalk (10), Trail Rations (5 days), Waterskin, Manacles, Simple Lock
 Backpack
