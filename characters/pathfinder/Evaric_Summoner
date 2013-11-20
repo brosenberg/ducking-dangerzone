@@ -23,9 +23,9 @@ Traits: Extremely Fashionable (+1 Bluff, +1 Diplomacy, +1 Intimidate, Intimidate
 Drawbacks: Meticulous (-2 on non-trained skills)
 
 Skills:
-Bluff                +6
-Diplomacy            +8
-Intimidate           +8
+Bluff                +7
+Diplomacy            +9
+Intimidate           +9
 Knowledge (Arcana)   +6
 Knowledge (History)  +6
 Knowledge (Local)    +6
@@ -36,7 +36,7 @@ Linguistics          +6
 Perception           +7
 Sense Motive         +2
 Spellcraft           +8
-Use Magic Device     +8
+Use Magic Device     +9
 
 Languages: Abyssal, Aklo, Common, Elven, Infernal
 
@@ -66,19 +66,19 @@ Backpack
 Spells Per Day: 0: INF  1: 4  2: 2
 
 Spells Known:
-0: 6  DC 14
+0: 6  DC 15
 Detect Magic
 Guidance
 Mage Hand
 Mending
 Prestidigiation
 Read Magic
-1: 4  DC 15
+1: 5  DC 16
 Enlarge Person: 1 round - Range 35 ft - 4 minutes 
 Grease: 1 SA - Range 35 ft - 4 minutes
 Lesser Rejuvenate Eidolon: 1 SA - Touch - 1d10+4 hp
 Mage Armor: 1 SA - Touch - 4 hours
-2: 2 DC 16
+2: 2 DC 17
 Haste: 1 SA - 35 ft, 4 creatures - 4 rounds
 Lesser Evolution Surge: 1 SA - Touch - 4 minutes
 
