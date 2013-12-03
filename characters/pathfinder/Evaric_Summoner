@@ -73,7 +73,7 @@ Mage Hand
 Mending
 Prestidigiation
 Read Magic
-1: 5  DC 16
+1: 5 (4 with mage armor)  DC 16
 Enlarge Person: 1 round - Range 35 ft - 4 minutes 
 Grease: 1 SA - Range 35 ft - 4 minutes
 Lesser Rejuvenate Eidolon: 1 SA - Touch - 1d10+4 hp
@@ -89,7 +89,7 @@ Str 15  Dex 14  Con 13  Int 7  Wis 10  Cha 11
 31hp
 Fort +4  Refl +5  Will +1
 Speed 40, Init +6
-AC 18  Touch 12  FF 16 (+6 Natural, +2 Dex)
+AC 22  Touch 12  FF 20 (+6 Natural, +2 Dex, +4 Armor)
 CMD 17
 Attack: Bite +5 1d6+2, Claw +5 1d6+2, Claw +5 1d6+2
         Rake: 1d4+2, 1d4+2
@@ -103,7 +103,7 @@ Str 17  Dex 12  Con 13  Int 7  Wis 10  Cha 11
 31hp
 Fort +4  Refl +4  Will +1
 Speed 40, Init +5
-AC 16  Touch 10  FF 15 (+6 Natural, +1 Dex, -1 Size)
+AC 20  Touch 10  FF 19 (+6 Natural, +1 Dex, -1 Size, +4 Armor)
 CMB +5  CMD 16
 Attack: Bite +5 1d8+3, Claw +5 1d8+3, Claw +5 1d8+3
         Rake: 1d6+3, 1d6+3
@@ -115,13 +115,14 @@ Power Attack: Bite +4 1d8+5, Claw +4 1d8+5, Claw +4 1d8+5
 Darkvision 60', Link, Share Spells, Evasion, Power Attack, Improved Initiative
 
 Skills (Bonus Class Skills: Acrobatics, Climb, Intimidate, Survival):
-Acrobatics   +7
-Climb        +6
-Intimidate   +4
-Perception   +6
-Sense Motive +4
-Stealth      +7
-Survival     +5
+              N  E
+Acrobatics   +7 +6
+Climb        +6 +7
+Intimidate   +4 +4
+Perception   +6 +6
+Sense Motive +4 +4
+Stealth      +7 +6
+Survival     +5 +5
 
 Claws 1pt
 Pounce 1pt
