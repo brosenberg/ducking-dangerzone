@@ -68,33 +68,34 @@ class Vorogoth(object):
 
     def bite(self, enlarged=False):
         r = self.__bite(enlarged)
-        print "  Bite  AC %s [%s] for %s [%s] damage." % (r[0], r[0]-2, r[1], r[1]+4)
+        print "  Bite  AC %s [%s] for %s [%s] damage" % (r[0], r[0]-2, r[1], r[1]+4)
 
     def claw(self, enlarged=False):
         r = self.__claw(enlarged)
         s = self.__grab(enlarged=enlarged)
         self.grabs.append([r[0], s[0], s[1]])
-        print "  Claw  AC %s [%s] for %s [%s] damage." % (r[0], r[0]-2, r[1], r[1]+4)
-        print "  Grab CMD %s [%s] for %s [%s] damage." % (s[0], s[0]-2, s[1], s[1]+4)
+        print "  Claw  AC %s [%s] for %s [%s] damage" % (r[0], r[0]-2, r[1], r[1]+4)
+        print "  Grab CMD %s [%s] for %s [%s] damage" % (s[0], s[0]-2, s[1], s[1]+4)
 
     def rend(self, enlarged=False):
         r = self.__rend(enlarged)
         rend_ac = self.rend_ac
-        print "  Rend  AC %s [%s] for %s [%s] damage." % (rend_ac, rend_ac-2, r, r+4)
+        print "  Rend  AC %s [%s] for %s [%s] damage" % (rend_ac, rend_ac-2, r, r+4)
 
     def attacks(self):
         summed_attacks = set()
         summed_grabs = set()
         print
         for rolls in self.attack:
-            summed_attacks.add((rolls[0], sum([x[1] for x in self.attack if x[0]>=rolls[0]])))
+            hits = [x[1] for x in self.attack if x[0]>=rolls[0]]
+            summed_attacks.add((rolls[0], sum(hits), len(hits)))
         for rolls in self.grabs:
             #summed_grabs.add((rolls[0], rolls[1], sum([x[2] for x in self.grabs if x[0]>=rolls[0]])))
             summed_grabs.add((rolls[0], rolls[1], rolls[2]))
         for attack in sorted(summed_attacks):
-            print "Hit AC %s for %s damage" % (attack[0], attack[1])
+            print "Hit AC %s for %s damage over %s attacks" % (attack[0], attack[1], attack[2])
         for grab in sorted(summed_grabs):
-            print "Grabbed AC %s CMD %s for %s damage" % (grab[0], grab[1], grab[2])
+            print "Grabbed AC %s CMD %s for %s damage over 2 attacks" % (grab[0], grab[1], grab[2])
 
     def full_attack(self, enlarged=False):
         self.__clear()

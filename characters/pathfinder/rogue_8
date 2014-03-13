@@ -1,0 +1,47 @@
+Elven Scout 8
+
+Str 14  Con 12  Dex 21  Wis 12  Int 12  Cha 7
+
+HP 7d8+16
+BAB +6/+1
+
+AC 21  Flat Footed 16  Touch 15 (+5 Armor, +1 Dodge, +5 Dex)
+Fort +3  Ref +11  Will +3
+
+Scout's Charge: Sneak attack on charge as if target was flat-footed
+Skirmisher: If you move more than 10' in a round and attack
+ deal sneak attack damage on first attack as if target was flat-footed.
+Sneak Attack +4d6
+Trap Sense +2
+Evasion
+
+Feats:
+1: Dodge: +1 Dodge bonus to AC
+2R: Weapon Finesse: Use Dex for attack rolls with Finesse weapons
+3: Nimble Moves: Can move 5' in Difficult Terrain without penalty
+5: Mobility: +4 dodge vs. AoO vaused by movement
+7: Spring Attack: Full Round Action, move full speed and make a single melee attack without provoking target. Must move at least 10' before the attack. Cannot use this to attack a foe that is adjacent to you at the beginning of the turn.
+8R: Vital Strike: On an Attack action, make a single attack, roll weapon damage twice.
+
+Get Acrobatic Steps at level 9
+
+Rogue Talent - Finesse Rogue: Weapon Finesse
+Rogue Talent - Ki Pool: 2 Ki
+                1 Ki point: +20' movement for 1 round
+                1 Ki point: +4 Stealth for 1 round
+Rogue Talent - Bleeding Attack: Cause 1 point of bleed damage per sneak attack die when you hit with sneak attacks. Stop bleeding with DC 15 Heal check
+Rogue Talent - Combat Trick: Vital Strike
+
+Skills:
+ Acrobatics      8+5   13
+ Bluff           8-2    6
+ Climb           8+2   10
+ Disable Device  8+5   13
+ Escape Artist   8+5   13
+ Perception      8+1    9
+ Sense Motive    8+1    9
+ Sleight of Hand 8+5   13
+ Stealth         8+5   13
+
+Languages: Common, Dwarven, Elvish
+
