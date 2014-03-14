@@ -1,47 +1,57 @@
-Elven Scout 8
+Elven Rogue (Scout Swashbuckler) 8
 
-Str 14  Con 12  Dex 21  Wis 12  Int 12  Cha 7
+Str 14  Con 13  Dex 22  Wis 10  Int 10  Cha 7
 
-HP 7d8+16
+HP 7d8+24 (8 at first leve, 8 for Con bonus, 8 for Favored Class)
 BAB +6/+1
+Initiative: +6
 
-AC 21  Flat Footed 16  Touch 15 (+5 Armor, +1 Dodge, +5 Dex)
-Fort +3  Ref +11  Will +3
+AC 22  Flat Footed 15  Touch 17 (+5 Armor, +1 Dodge, +6 Dex)
+Fort +3  Ref +12  Will +2, +2 vs. Fear. +2 vs. Enchantment
 
+Attack: +14/+9 Corrosive Elven Curve Blade +1 (1d10+3 +1d6 acid)
+Vital Strike: +14 Corrosive Elven Curve Blade +1 (2d10+3 +2d6 acid)
+Vital Strike + Sneak Attack: +14 Corrosive Elven Curve Blade +1 (2d10+3 +2d6 acid +4d6 Sneak Attack +4 Bleed) (11-59 +4 bleed)
+
+Racial Traits:
+Elven Immunities: Immune to magic sleep, +2 vs. Enchantment
+Keen Senses: +2 Perception
+Silent Hunter: Elves with this racial trait reduce the penalty for using Stealth while moving by 5 and can make Stealth checks while running at a –20 penalty
+Weapon Familiarity: Proficient with longbows, longswords, rapier and shortbows. Elven Curved Blades are considered martial weapons.
+Low-Light Vision
+
+Class Abilities:
 Scout's Charge: Sneak attack on charge as if target was flat-footed
 Skirmisher: If you move more than 10' in a round and attack
  deal sneak attack damage on first attack as if target was flat-footed.
 Sneak Attack +4d6
-Trap Sense +2
 Evasion
+Daring: +2 Acrobatics, +2 Save vs. Fear
 
 Feats:
+1S: Martial Weapon Proficiency (Elven Curved Blade)
 1: Dodge: +1 Dodge bonus to AC
 2R: Weapon Finesse: Use Dex for attack rolls with Finesse weapons
 3: Nimble Moves: Can move 5' in Difficult Terrain without penalty
+4R: Weapon Focus (Elven Curved Blade)
 5: Mobility: +4 dodge vs. AoO vaused by movement
-7: Spring Attack: Full Round Action, move full speed and make a single melee attack without provoking target. Must move at least 10' before the attack. Cannot use this to attack a foe that is adjacent to you at the beginning of the turn.
+7: Acrobatic Step: Can move 15' more feet in Difficult Terrain. Stacks with Nimble Moves.
 8R: Vital Strike: On an Attack action, make a single attack, roll weapon damage twice.
 
-Get Acrobatic Steps at level 9
 
 Rogue Talent - Finesse Rogue: Weapon Finesse
-Rogue Talent - Ki Pool: 2 Ki
-                1 Ki point: +20' movement for 1 round
-                1 Ki point: +4 Stealth for 1 round
+Rogue Talent - Weapon Training: Elven Curved Blade
 Rogue Talent - Bleeding Attack: Cause 1 point of bleed damage per sneak attack die when you hit with sneak attacks. Stop bleeding with DC 15 Heal check
 Rogue Talent - Combat Trick: Vital Strike
 
 Skills:
- Acrobatics      8+5   13
- Bluff           8-2    6
+ Acrobatics      8+5+2 15
  Climb           8+2   10
  Disable Device  8+5   13
  Escape Artist   8+5   13
- Perception      8+1    9
- Sense Motive    8+1    9
+ Perception      8+0+2 10
+ Sense Motive    8+0    8
  Sleight of Hand 8+5   13
  Stealth         8+5   13
 
-Languages: Common, Dwarven, Elvish
-
+Languages: Common, Elvish
