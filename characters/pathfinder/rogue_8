@@ -45,13 +45,13 @@ Rogue Talent - Bleeding Attack: Cause 1 point of bleed damage per sneak attack d
 Rogue Talent - Combat Trick: Vital Strike
 
 Skills:
- Acrobatics      8+5+2 15
- Climb           8+2   10
- Disable Device  8+5   13
- Escape Artist   8+5   13
- Perception      8+0+2 10
- Sense Motive    8+0    8
- Sleight of Hand 8+5   13
- Stealth         8+5   13
+ Acrobatics      8+5+2+3 18
+ Climb           8+2+3   13
+ Disable Device  8+5+3   16
+ Escape Artist   8+5+3   16
+ Perception      8+0+2+3 13
+ Sense Motive    8+0+3   11
+ Sleight of Hand 8+5+3   16
+ Stealth         8+5+3   16
 
 Languages: Common, Elvish
