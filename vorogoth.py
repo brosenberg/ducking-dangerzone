@@ -20,14 +20,20 @@ def to_hit(mod):
 
 class Vorogoth(object):
     def __init__(self):
+        self.acid_damage = []
         self.attack = []
         self.grabs = []
-        self.rend_ac = 0
+        self.rend_hit = sys.maxint
 
     def __clear(self):
+        self.acid_damage = []
         self.attack = []
         self.grabs = []
-        self.rend_ac = sys.maxint
+        self.rend_hit = sys.maxint
+
+    def __acid(self, hit):
+        damage = roll(1,6)
+        self.acid_damage.append([hit, damage])
 
     def __bite(self, enlarged=False):
         hit = to_hit(13)
@@ -53,8 +59,8 @@ class Vorogoth(object):
             damage = roll(4,6)+9
         else:
             damage = roll(3,6)+8
-        if self.rend_ac > hit:
-            self.rend_ac = hit
+        if self.rend_hit > hit:
+            self.rend_hit = hit
         self.attack.append([hit, damage])
         return [hit, damage]
 
@@ -63,7 +69,7 @@ class Vorogoth(object):
             damage = roll(4,6)+13
         else:
             damage = roll(3,6)+12
-        self.attack.append([self.rend_ac, damage])
+        self.attack.append([self.rend_hit, damage])
         return damage
 
     def bite(self, enlarged=False):
@@ -79,8 +85,8 @@ class Vorogoth(object):
 
     def rend(self, enlarged=False):
         r = self.__rend(enlarged)
-        rend_ac = self.rend_ac
-        print "  Rend  AC %s [%s] for %s [%s] damage" % (rend_ac, rend_ac-2, r, r+4)
+        rend_hit = self.rend_hit
+        print "  Rend  AC %s [%s] for %s [%s] damage" % (rend_hit, rend_hit-2, r, r+4)
 
     def attacks(self):
         summed_attacks = set()
@@ -116,6 +122,11 @@ def main():
     print "ENLARGED"
     v.full_attack(enlarged=True)
     print '-'*80
+    twenties = 'Have some twenties: '
+    for i in range(10):
+        twenties += '%s, ' % (roll(1,20),)
+    twenties += '%s' % (roll(1,20),)
+    print twenties
 
 if __name__ == '__main__':
     main()
