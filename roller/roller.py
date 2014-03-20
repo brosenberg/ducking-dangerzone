@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import argparse
-import random
 import json
+import random
+
+BIGNUMBER = 1000
 
 def roll(die, sides):
     r = 0
@@ -10,10 +12,15 @@ def roll(die, sides):
         r += random.randint(1,sides)
     return r
 
-
 class Attack(object):
     def __init__(self, data):
         self.data = data
+        try:
+            self.crit_range = self.data['crit']['range']
+            self.crit_multiplier = self.data['crit']['multiplier']
+        except KeyError:
+            self.crit_range = 20
+            self.crit_multiplier = 2
         self.damage_types = {}
         for damage in self.data['damage']:
             for damage_type in damage:
@@ -42,11 +49,23 @@ class Attack(object):
 
     def roll(self):
         attack = {'hit':{}, 'damage':{}}
+
         try:
             for hit_type, hit in self.data['hit'].items():
-                attack['hit'][hit_type] = roll(1,20)+hit
+                hit_roll = roll(1,20)
+                if hit_roll == 20:
+                    attack['hit'][hit_type] = BIGNUMBER
+                else:
+                    attack['hit'][hit_type] = hit_roll+hit
+                if hit_type == 'ac' and hit_roll >= self.crit_range:
+                    confirm_roll = roll(1,20)
+                    if confirm_roll == 20:
+                        attack['hit']['confirm'] = BIGNUMBER
+                    else:
+                        attack['hit']['confirm'] = roll(1,20)+hit
         except KeyError:
             pass
+
         for dt in self.damage_types:
             attack['damage'][dt] = roll(self.damage_types[dt]['dice'], self.damage_types[dt]['sides']) + self.damage_types[dt]['modifier']
         return attack

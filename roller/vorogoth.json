@@ -2,6 +2,7 @@
     "attacks": {
         "bite": {
             "hit": { "ac": 13 },
+            "crit": { "range": 20, "multiplier": 2 },
             "damage": [
                 { "slash/pierce/bludgeon": {
                         "dice":  1,
@@ -18,6 +19,7 @@
         },
         "claw": {
             "hit": { "ac": 13 },
+            "crit": { "range": 20, "multiplier": 2 },
             "damage": [
                 { "slash/pierce/bludgeon": {
                         "dice":  2,
