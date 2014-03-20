@@ -49,7 +49,6 @@
             ]
         },
         "rend": {
-            "hit": { "ac": -1 },
             "damage": [
                 { "slash/pierce/bludgeon": {
                         "dice":  2,
@@ -65,5 +64,27 @@
             ]
         }
     },
-    "full_attack": [ "bite", "claw", "claw" ]
+    "full_attack": {
+        "Bite": {
+            "attack": "bite"
+        },
+        "Claw 1": {
+            "attack": "claw"
+        },
+        "Claw 2": {
+            "attack": "claw"
+        },
+        "Rake 1": {
+            "attack": "rake",
+            "depends": [ "Claw 1" ]
+        },
+        "Rake 2": {
+            "attack": "rake",
+            "depends": [ "Claw 2" ]
+        },
+        "Rend": {
+            "attack": "rend",
+            "depends": [ "Claw 1", "Claw 2" ]
+        }
+    }
 }
