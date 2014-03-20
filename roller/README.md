@@ -1,4 +1,10 @@
 Pathfinder Combat Roller
 ========================
 
-Does all of your combat rolls for you after you construct a moderately complex JSON representation of your character.
+Have you ever wanted to construct a moderately complex JSON representation of your Pathfinder character's combat attributes? If so, this is the combat roller for you!
+
+### TODO:
+* Critical hit damage
+* Power attack
+* Enlarged
+* Iterative attacks
