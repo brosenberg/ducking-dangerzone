@@ -106,15 +106,18 @@ class Character(object):
             s.append("%8s: %s" % (attack, self.attacks[ self.data['full_attack'][attack]['attack'] ]))
         return "\n".join(s)
 
-    def full_attack(self):
+    def _full_attack(self):
         attacks = {}
 
         def get_min_hits(attack):
             hits = {}
             for parent in self.data['full_attack'][attack]['depends']:
-                for parent_hit in attacks[parent]['hit']:
-                    if parent_hit not in hits or attacks[parent]['hit'][parent_hit] < hits[parent_hit]:
-                        hits[parent_hit] = attacks[parent]['hit'][parent_hit]
+                try:
+                    for parent_hit in attacks[parent]['hit']:
+                        if parent_hit not in hits or attacks[parent]['hit'][parent_hit] < hits[parent_hit]:
+                            hits[parent_hit] = attacks[parent]['hit'][parent_hit]
+                except KeyError:
+                    raise Exception, "Attack '%s' does not exist" % (parent,)
             return hits
 
         #FIXME: THIS SHOULD REALLY BE SORTED BETTER
@@ -127,7 +130,22 @@ class Character(object):
                 attacks[attack]['hit'] = hits
             except KeyError:
                 pass
-            print attack, attacks[attack]
+
+        return attacks
+
+    def full_attack(self):
+        attacks = self._full_attack()
+        results = {}
+        for attack in sorted(attacks):
+            hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
+            damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
+            damage_total = sum([d for d in attacks[attack]['damage'].values()])
+            print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
+
+            if len(attacks[attack]['hit']) == 1:
+                pass
+
+        print sum([attacks[attack]['damage'][type] for attack in attacks for type in attacks[attack]['damage']])
 
 
 def main():
