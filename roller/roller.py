@@ -18,9 +18,11 @@ class Attack(object):
         self.data = data
         try:
             self.crit_range = self.data['crit']['range']
-            self.crit_multiplier = self.data['crit']['multiplier']
         except KeyError:
             self.crit_range = 20
+        try:
+            self.crit_multiplier = self.data['crit']['multiplier']
+        except KeyError:
             self.crit_multiplier = 2
         self.damage_types = {}
         for damage in self.data['damage']:
@@ -117,7 +119,7 @@ class Character(object):
                         if parent_hit not in hits or attacks[parent]['hit'][parent_hit] < hits[parent_hit]:
                             hits[parent_hit] = attacks[parent]['hit'][parent_hit]
                 except KeyError:
-                    raise Exception, "Attack '%s' does not exist" % (parent,)
+                    raise(Exception, "Attack '%s' does not exist" % (parent,))
             return hits
 
         #FIXME: THIS SHOULD REALLY BE SORTED BETTER
