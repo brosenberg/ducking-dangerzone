@@ -1,0 +1,69 @@
+{
+    "attacks": {
+        "bite": {
+            "hit": { "ac": 13 },
+            "damage": [
+                { "slash/pierce/bludgeon": {
+                        "dice":  1,
+                        "sides": 8,
+                        "modifier": 8
+                    }
+                },
+                { "acid":  {
+                        "dice":  1,
+                        "sides": 6
+                    }
+                }
+            ]
+        },
+        "claw": {
+            "hit": { "ac": 13 },
+            "damage": [
+                { "slash/pierce/bludgeon": {
+                        "dice":  2,
+                        "sides": 6,
+                        "modifier": 8
+                    }
+                },
+                { "acid":  {
+                        "dice":  1,
+                        "sides": 6
+                    }
+                }
+            ]
+        },
+        "rake": {
+            "hit": { "cmd": 19 },
+            "damage": [
+                { "slash/pierce/bludgeon": {
+                        "dice":  1,
+                        "sides": 6,
+                        "modifier": 8
+                    }
+                },
+                { "acid":  {
+                        "dice":  1,
+                        "sides": 6
+                    }
+                }
+            ]
+        },
+        "rend": {
+            "hit": { "ac": -1 },
+            "damage": [
+                { "slash/pierce/bludgeon": {
+                        "dice":  2,
+                        "sides": 6,
+                        "modifier": 12
+                    }
+                },
+                { "acid":  {
+                        "dice":  1,
+                        "sides": 6
+                    }
+                }
+            ]
+        }
+    },
+    "full_attack": [ "bite", "claw", "claw" ]
+}
