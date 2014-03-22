@@ -61,12 +61,16 @@ class Attack(object):
                 hit_roll = roll(1, 20)
                 if hit_roll == 20:
                     attack['hit'][hit_type] = BIGNUMBER
+                elif hit_roll == 1:
+                    attack['hit'][hit_type] = -BIGNUMBER
                 else:
                     attack['hit'][hit_type] = hit_roll+hit
                 if hit_type == 'ac' and hit_roll >= self.crit_range:
                     confirm_roll = roll(1, 20)
                     if confirm_roll == 20:
                         attack['hit']['confirm'] = BIGNUMBER
+                    elif confirm_roll == 1:
+                        attack['hit'][hit_type] = -BIGNUMBER
                     else:
                         attack['hit']['confirm'] = roll(1, 20)+hit
         except KeyError:

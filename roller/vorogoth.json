@@ -38,13 +38,13 @@
             "hit": { "cmd": 19 },
             "damage": [
                 { "slash/pierce/bludgeon": {
-                        "dice":  1,
+                        "dice":  2,
                         "sides": 6,
-                        "modifier": 8
+                        "modifier": 16
                     }
                 },
                 { "acid":  {
-                        "dice":  1,
+                        "dice":  2,
                         "sides": 6
                     }
                 }
