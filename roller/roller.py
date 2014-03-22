@@ -14,7 +14,8 @@ def roll(die, sides):
     return r
 
 class Attack(object):
-    def __init__(self, data):
+    def __init__(self, name, data):
+        self.name = name
         self.data = data
         try:
             self.crit_range = self.data['crit']['range']
@@ -53,8 +54,17 @@ class Attack(object):
             damage.append(s)
         return attack + ' +'.join(damage)
 
-    def roll(self):
+    def _roll_damage_type(self, type):
+        dice  = self.damage_types[type]['dice']
+        sides = self.damage_types[type]['sides']
+        mod   = self.damage_types[type]['modifier']
+        return roll(dice,sides)+mod
+
+    def roll(self, name=None):
         attack = {'hit':{}, 'damage':{}}
+        critical = {'hit':{}, 'damage':{}}
+        if name is None:
+            name = self.name
 
         try:
             for hit_type, hit in self.data['hit'].items():
@@ -65,20 +75,34 @@ class Attack(object):
                     attack['hit'][hit_type] = -BIGNUMBER
                 else:
                     attack['hit'][hit_type] = hit_roll+hit
+
                 if hit_type == 'ac' and hit_roll >= self.crit_range:
                     confirm_roll = roll(1, 20)
                     if confirm_roll == 20:
-                        attack['hit']['confirm'] = BIGNUMBER
+                        critical['hit']['ac'] = BIGNUMBER
                     elif confirm_roll == 1:
-                        attack['hit'][hit_type] = -BIGNUMBER
+                        critical['hit']['ac'] = -BIGNUMBER
                     else:
-                        attack['hit']['confirm'] = roll(1, 20)+hit
+                        critical['hit']['ac'] = roll(1, 20)+hit
+
         except KeyError:
             pass
 
-        for dt in self.damage_types:
-            attack['damage'][dt] = roll(self.damage_types[dt]['dice'], self.damage_types[dt]['sides']) + self.damage_types[dt]['modifier']
-        return attack
+        for type in self.damage_types:
+            attack['damage'][type] = self._roll_damage_type(type)
+
+        if critical['hit']:
+            for i in range(self.crit_multiplier-1):
+                for type in self.damage_types:
+                    damage = self._roll_damage_type(type)
+                    try:
+                        critical['damage'][type] += damage
+                    except KeyError:
+                        critical['damage'][type] = damage
+
+            return {name: attack, name + ' (critical)': critical}
+        else:
+            return {name: attack}
 
 
 class Character(object):
@@ -87,7 +111,7 @@ class Character(object):
         self.attacks = {}
 
         for attack in self.data['attacks']:
-            self.attacks[attack] = Attack(self.data['attacks'][attack])
+            self.attacks[attack] = Attack(attack, self.data['attacks'][attack])
 
         # TODO: Make this work later.
         #self.ordered_attacks = []
@@ -115,6 +139,7 @@ class Character(object):
     def _full_attack(self):
         attacks = {}
 
+        # Find the minimum to-hit rolls for dependent attacks
         def get_min_hits(attack):
             hits = {}
             for parent in self.data['full_attack'][attack]['depends']:
@@ -123,12 +148,16 @@ class Character(object):
                         if parent_hit not in hits or attacks[parent]['hit'][parent_hit] < hits[parent_hit]:
                             hits[parent_hit] = attacks[parent]['hit'][parent_hit]
                 except KeyError:
-                    raise(Exception, "Attack '%s' does not exist" % (parent,))
+                    raise Exception, "Attack '%s' depends on non-existent attack '%s'" % (attack, parent)
             return hits
 
-        #FIXME: THIS SHOULD REALLY BE SORTED BETTER
+
         for attack in sorted(self.data['full_attack']):
-            attacks[attack] = self.attacks[ self.data['full_attack'][attack]['attack'] ].roll()
+            #attacks[attack] = self.attacks[ self.data['full_attack'][attack]['attack'] ].roll()
+            attacks.update(self.attacks[ self.data['full_attack'][attack]['attack'] ].roll(name=attack))
+            #attacks[attack] =
+        #FIXME: full_attack list needs to be in order of dependency, or things might break.
+        # Calculate dependent attack rolls
         for attack in attacks:
             try:
                 hits = get_min_hits(attack)
@@ -149,9 +178,39 @@ class Character(object):
             print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
 
             if len(attacks[attack]['hit']) == 1:
-                pass
+                hit_type = attacks[attack]['hit'].keys()[0]
+                hit_roll = attacks[attack]['hit'].values()[0]
+                if hit_type not in results:
+                    results[hit_type] = {hit_roll:{}}
+                if hit_roll not in results[hit_type]:
+                    results[hit_type].update({hit_roll:{}})
+                for damage_type in attacks[attack]['damage']:
+                    if damage_type not in results[hit_type][hit_roll]:
+                        results[hit_type][hit_roll][damage_type] = attacks[attack]['damage'][damage_type]
+                    else:
+                        results[hit_type][hit_roll][damage_type] += attacks[attack]['damage'][damage_type]
 
-        print sum([attacks[attack]['damage'][type] for attack in attacks for type in attacks[attack]['damage']])
+        # Oh god, what even happened here?
+        # This is going through all of the attack results and adding the damage
+        # of lower to-hit values to the higher to-hit values.
+        # So, an attack roll of 15 would add its damage to an attack roll of 30
+        for hit_type in results:
+            for hit_roll in results[hit_type].keys():
+                for hit_roll2 in results[hit_type].keys():
+                    if hit_roll < hit_roll2:
+                        for damage_type in results[hit_type][hit_roll]:
+                            if damage_type in results[hit_type][hit_roll2]:
+                                results[hit_type][hit_roll2][damage_type] += results[hit_type][hit_roll][damage_type]
+                            else:
+                                results[hit_type][hit_roll2][damage_type] = results[hit_type][hit_roll][damage_type]
+
+        print
+        for hit_type in results:
+            for hit_roll in sorted(results[hit_type].keys()):
+                damage = ' +'.join(['%s %s' % (d, t) for (t, d) in results[hit_type][hit_roll].items()])
+                damage_total = sum([d for d in results[hit_type][hit_roll].values()])
+                print "Hit %s %s for %s (%s total)" % (hit_type.upper(), hit_roll, damage, damage_total)
+        print "Total damage:", sum([attacks[attack]['damage'][type] for attack in attacks for type in attacks[attack]['damage']])
 
 
 def main():
