@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-import copy
 import json
-import pprint
 import random
 import sys
 
@@ -58,11 +56,11 @@ class Attack(object):
             damage.append(s)
         return attack + ' +'.join(damage)
 
-    def _roll_damage_type(self, type):
-        dice  = self.damage_types[type]['dice']
-        sides = self.damage_types[type]['sides']
-        mod   = self.damage_types[type]['modifier']
-        return roll(dice,sides)+mod
+    def _roll_damage_type(self, damage_type):
+        dice  = self.damage_types[damage_type]['dice']
+        sides = self.damage_types[damage_type]['sides']
+        mod   = self.damage_types[damage_type]['modifier']
+        return roll(dice, sides)+mod
 
     def roll(self, name=None):
         attack = {'hit':{}, 'damage':{}}
@@ -90,8 +88,8 @@ class Attack(object):
         except KeyError:
             pass
 
-        for type in self.damage_types:
-            attack['damage'][type] = self._roll_damage_type(type)
+        for damage_type in self.damage_types:
+            attack['damage'][damage_type] = self._roll_damage_type(damage_type)
 
         if critical['hit']:
             for i in range(self.crit_multiplier-1):
