@@ -69,7 +69,6 @@ class Attack(object):
         critical = {'hit':{}, 'damage':{}}
         if name is None:
             name = self.name
-
         try:
             for hit_type, hit in self.data['hit'].items():
                 hit_roll = roll(1, 20)
@@ -88,7 +87,6 @@ class Attack(object):
                         critical['hit']['ac'] = -BIGNUMBER
                     else:
                         critical['hit']['ac'] = roll(1, 20)+hit
-
         except KeyError:
             pass
 
@@ -116,16 +114,6 @@ class Character(object):
 
         for attack in self.data['attacks']:
             self.attacks[attack] = Attack(attack, self.data['attacks'][attack])
-
-        # TODO: Make this work later.
-        #self.ordered_attacks = []
-        #d = {}
-        #for attack in sorted(self.data['full_attack']):
-            #try:
-                #d[attack] = self.data['full_attack']['depends']
-            #except KeyError:
-                #self.ordered_attacks.append(attack)
-        #for attack in d:
 
     def __repr__(self):
         return repr(self.data)
@@ -172,6 +160,12 @@ class Character(object):
 
     def attack_specifics(self, attacks):
         for attack in sorted(attacks):
+            try:
+                if attacks[attack]['hit']['ac'] == -BIGNUMBER:
+                    print "%s critically missed!" % (attack,)
+                    continue
+            except KeyError:
+                pass
             hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
             damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
             damage_total = sum([d for d in attacks[attack]['damage'].values()])
@@ -188,15 +182,21 @@ class Character(object):
             attack_tuples[hit_type] = [(z, attacks[y]['damage'][x], x) for y in single_attacks for x in attacks[y]['damage'] for w, z in attacks[y]['hit'].items() if w == hit_type and z != -BIGNUMBER]
             summed_damage = Counter()
             damage_totals = {}
-            for attack_tuple in sorted(attack_tuples[hit_type]):
-                summed_damage[attack_tuple[2]] += attack_tuple[1]
-                damage_totals[attack_tuple[0]] = dict(summed_damage)
+            for (to_hit, damage, damage_type) in sorted(attack_tuples[hit_type]):
+                summed_damage[damage_type] += damage
+                damage_totals[to_hit] = dict(summed_damage)
             for to_hit in sorted(damage_totals):
                 damage = ' +'.join(['%s %s' % (d, t) for (t, d) in damage_totals[to_hit].items()])
                 damage_sum = sum([d for d in damage_totals[to_hit].values()])
                 print "Hit %s %s for %s damage (%s total)" % (hit_type.upper(), to_hit, damage, damage_sum)
         print
         for attack in non_single_attacks:
+            try:
+                if attacks[attack]['hit']['ac'] == -BIGNUMBER:
+                    print "%s critically missed!" % (attack,)
+                    continue
+            except KeyError:
+                pass
             hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
             damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
             damage_total = sum([d for d in attacks[attack]['damage'].values()])
