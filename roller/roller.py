@@ -110,10 +110,16 @@ class Attack(object):
 class Character(object):
     def __init__(self, data):
         self.data = data
+        self.name = self.data.get('name')
         self.attacks = {}
+        self.attack_name_len = 0
 
         for attack in self.data['attacks']:
             self.attacks[attack] = Attack(attack, self.data['attacks'][attack])
+
+        for attack in self.data['full_attack']:
+            if len(attack) > self.attack_name_len:
+                self.attack_name_len = len(attack)
 
     def __repr__(self):
         return repr(self.data)
@@ -155,13 +161,20 @@ class Character(object):
                 attacks[attack]['hit'] = hits
             except KeyError:
                 pass
+        # Prune attacks that depended on attacks that critically missed
+        for attack in attacks.keys():
+            try:
+                if 'depends' in self.data['full_attack'][attack] and attacks[attack]['hit']['ac'] == -BIGNUMBER:
+                    del attacks[attack]
+            except KeyError:
+                pass
 
         return attacks
 
     def _print_attack_roll(self, attack, attack_name=None):
         try:
             if attack['hit']['ac'] == -BIGNUMBER and attack_name:
-                print "%s critically missed!" % (attack_name,)
+                print "%s critically missed!" % (attack_name.rjust(self.attack_name_len),)
                 return
         except KeyError:
             pass
@@ -169,7 +182,7 @@ class Character(object):
         damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attack['damage'].items()])
         damage_total = sum([d for d in attack['damage'].values()])
         if attack_name:
-            print "%s hit %s for %s (%s total)" % (attack_name, hits, damage, damage_total)
+            print "%s hit %s for %s (%s total)" % (attack_name.rjust(self.attack_name_len), hits, damage, damage_total)
         else:
             print "Hit %s for %s (%s total)" % (hits, damage, damage_total)
 
@@ -195,15 +208,19 @@ class Character(object):
                 damage_totals[to_hit] = dict(summed_damage)
             for to_hit in sorted(damage_totals):
                 self._print_attack_roll( {'hit': {hit_type: to_hit}, 'damage': damage_totals[to_hit]} )
-        print
+        print '  Non-summed Attacks ---'
         for attack in non_single_attacks:
             self._print_attack_roll(attacks[attack], attack_name=attack)
 
     def full_attack(self):
         attacks = self._full_attack()
+        if self.name:
+            print "%s full attacks!" % (self.name,)
+        print '  Attack Specifics ---'
         for attack in sorted(attacks):
             self._print_attack_roll(attacks[attack], attack_name=attack)
         print
+        print '  Attack Summary ---'
         self.attack_summary(attacks)
 
 

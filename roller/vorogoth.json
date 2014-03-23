@@ -1,4 +1,5 @@
 {
+    "name": "Vorogoth the Black Hound",
     "attacks": {
         "bite": {
             "hit": { "ac": 13 },
