@@ -158,18 +158,20 @@ class Character(object):
 
         return attacks
 
-    def attack_specifics(self, attacks):
-        for attack in sorted(attacks):
-            try:
-                if attacks[attack]['hit']['ac'] == -BIGNUMBER:
-                    print "%s critically missed!" % (attack,)
-                    continue
-            except KeyError:
-                pass
-            hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
-            damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
-            damage_total = sum([d for d in attacks[attack]['damage'].values()])
-            print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
+    def _print_attack_roll(self, attack, attack_name=None):
+        try:
+            if attack['hit']['ac'] == -BIGNUMBER and attack_name:
+                print "%s critically missed!" % (attack_name,)
+                return
+        except KeyError:
+            pass
+        hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attack['hit'].items()])
+        damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attack['damage'].items()])
+        damage_total = sum([d for d in attack['damage'].values()])
+        if attack_name:
+            print "%s hit %s for %s (%s total)" % (attack_name, hits, damage, damage_total)
+        else:
+            print "Hit %s for %s (%s total)" % (hits, damage, damage_total)
 
     def attack_summary(self, attacks):
         hit_types = set([x for y in attacks for x in attacks[y]['hit'].keys()])
@@ -179,32 +181,28 @@ class Character(object):
         attack_tuples = {}
 
         for hit_type in hit_types:
-            attack_tuples[hit_type] = [(z, attacks[y]['damage'][x], x) for y in single_attacks for x in attacks[y]['damage'] for w, z in attacks[y]['hit'].items() if w == hit_type and z != -BIGNUMBER]
+            attack_tuples[hit_type] = []
+            for attack in single_attacks:
+                for ht, to_hit in attacks[attack]['hit'].items():
+                    if ht == hit_type and to_hit != -BIGNUMBER:
+                        for damage_type in attacks[attack]['damage']:
+                            attack_tuples[hit_type].append((to_hit, attacks[attack]['damage'][damage_type], damage_type))
+
             summed_damage = Counter()
             damage_totals = {}
             for (to_hit, damage, damage_type) in sorted(attack_tuples[hit_type]):
                 summed_damage[damage_type] += damage
                 damage_totals[to_hit] = dict(summed_damage)
             for to_hit in sorted(damage_totals):
-                damage = ' +'.join(['%s %s' % (d, t) for (t, d) in damage_totals[to_hit].items()])
-                damage_sum = sum([d for d in damage_totals[to_hit].values()])
-                print "Hit %s %s for %s damage (%s total)" % (hit_type.upper(), to_hit, damage, damage_sum)
+                self._print_attack_roll( {'hit': {hit_type: to_hit}, 'damage': damage_totals[to_hit]} )
         print
         for attack in non_single_attacks:
-            try:
-                if attacks[attack]['hit']['ac'] == -BIGNUMBER:
-                    print "%s critically missed!" % (attack,)
-                    continue
-            except KeyError:
-                pass
-            hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
-            damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
-            damage_total = sum([d for d in attacks[attack]['damage'].values()])
-            print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
+            self._print_attack_roll(attacks[attack], attack_name=attack)
 
     def full_attack(self):
         attacks = self._full_attack()
-        self.attack_specifics(attacks)
+        for attack in sorted(attacks):
+            self._print_attack_roll(attacks[attack], attack_name=attack)
         print
         self.attack_summary(attacks)
 
