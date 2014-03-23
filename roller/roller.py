@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import argparse
+import copy
 import json
+import pprint
 import random
 import sys
 
@@ -153,9 +155,7 @@ class Character(object):
 
 
         for attack in sorted(self.data['full_attack']):
-            #attacks[attack] = self.attacks[ self.data['full_attack'][attack]['attack'] ].roll()
             attacks.update(self.attacks[ self.data['full_attack'][attack]['attack'] ].roll(name=attack))
-            #attacks[attack] =
         #FIXME: full_attack list needs to be in order of dependency, or things might break.
         # Calculate dependent attack rolls
         for attack in attacks:
@@ -168,49 +168,46 @@ class Character(object):
 
         return attacks
 
-    def full_attack(self):
-        attacks = self._full_attack()
-        results = {}
+    def attack_specifics(self, attacks):
         for attack in sorted(attacks):
             hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
             damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
             damage_total = sum([d for d in attacks[attack]['damage'].values()])
             print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
 
-            if len(attacks[attack]['hit']) == 1:
-                hit_type = attacks[attack]['hit'].keys()[0]
-                hit_roll = attacks[attack]['hit'].values()[0]
-                if hit_type not in results:
-                    results[hit_type] = {hit_roll:{}}
-                if hit_roll not in results[hit_type]:
-                    results[hit_type].update({hit_roll:{}})
-                for damage_type in attacks[attack]['damage']:
-                    if damage_type not in results[hit_type][hit_roll]:
-                        results[hit_type][hit_roll][damage_type] = attacks[attack]['damage'][damage_type]
-                    else:
-                        results[hit_type][hit_roll][damage_type] += attacks[attack]['damage'][damage_type]
+    def attack_summary(self, attacks):
+        hit_types = set([x for y in attacks for x in attacks[y]['hit'].keys()])
+        single_attacks = [x for x in attacks if len(attacks[x]['hit']) == 1]
+        non_single_attacks = [x for x in attacks if len(attacks[x]['hit']) != 1]
 
-        # Oh god, what even happened here?
-        # This is going through all of the attack results and adding the damage
-        # of lower to-hit values to the higher to-hit values.
-        # So, an attack roll of 15 would add its damage to an attack roll of 30
-        for hit_type in results:
-            for hit_roll in results[hit_type].keys():
-                for hit_roll2 in results[hit_type].keys():
-                    if hit_roll < hit_roll2:
-                        for damage_type in results[hit_type][hit_roll]:
-                            if damage_type in results[hit_type][hit_roll2]:
-                                results[hit_type][hit_roll2][damage_type] += results[hit_type][hit_roll][damage_type]
-                            else:
-                                results[hit_type][hit_roll2][damage_type] = results[hit_type][hit_roll][damage_type]
+        attack_tuples = {}
 
+        for hit_type in hit_types:
+            attack_tuples[hit_type] = [(z, attacks[y]['damage'][x], x) for y in single_attacks for x in attacks[y]['damage'] for w, z in attacks[y]['hit'].items() if w == hit_type and z != -BIGNUMBER]
+            summed_damage = {}
+            damage_totals = {}
+            for attack_tuple in sorted(attack_tuples[hit_type]):
+                if attack_tuple[2] not in summed_damage:
+                    summed_damage[attack_tuple[2]] = attack_tuple[1]
+                else:
+                    summed_damage[attack_tuple[2]] += attack_tuple[1]
+                damage_totals[attack_tuple[0]] = copy.deepcopy(summed_damage)
+            for to_hit in sorted(damage_totals):
+                damage = ' +'.join(['%s %s' % (d, t) for (t, d) in damage_totals[to_hit].items()])
+                damage_sum = sum([d for d in damage_totals[to_hit].values()])
+                print "Hit %s %s for %s damage (%s total)" % (hit_type.upper(), to_hit, damage, damage_sum)
         print
-        for hit_type in results:
-            for hit_roll in sorted(results[hit_type].keys()):
-                damage = ' +'.join(['%s %s' % (d, t) for (t, d) in results[hit_type][hit_roll].items()])
-                damage_total = sum([d for d in results[hit_type][hit_roll].values()])
-                print "Hit %s %s for %s (%s total)" % (hit_type.upper(), hit_roll, damage, damage_total)
-        print "Total damage:", sum([attacks[attack]['damage'][type] for attack in attacks for type in attacks[attack]['damage']])
+        for attack in non_single_attacks:
+            hits = ' and '.join(['%s %s' % (t.upper(), h) for (t, h) in attacks[attack]['hit'].items()])
+            damage = ' +'.join(['%s %s' % (d, t) for (t, d) in attacks[attack]['damage'].items()])
+            damage_total = sum([d for d in attacks[attack]['damage'].values()])
+            print "%s hit %s for %s (%s total)" % (attack, hits, damage, damage_total)
+
+    def full_attack(self):
+        attacks = self._full_attack()
+        self.attack_specifics(attacks)
+        print
+        self.attack_summary(attacks)
 
 
 def main():
