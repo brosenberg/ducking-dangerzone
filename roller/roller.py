@@ -7,6 +7,8 @@ import pprint
 import random
 import sys
 
+from collections import Counter
+
 BIGNUMBER = 1000
 
 def roll(die, sides):
@@ -184,14 +186,11 @@ class Character(object):
 
         for hit_type in hit_types:
             attack_tuples[hit_type] = [(z, attacks[y]['damage'][x], x) for y in single_attacks for x in attacks[y]['damage'] for w, z in attacks[y]['hit'].items() if w == hit_type and z != -BIGNUMBER]
-            summed_damage = {}
+            summed_damage = Counter()
             damage_totals = {}
             for attack_tuple in sorted(attack_tuples[hit_type]):
-                if attack_tuple[2] not in summed_damage:
-                    summed_damage[attack_tuple[2]] = attack_tuple[1]
-                else:
-                    summed_damage[attack_tuple[2]] += attack_tuple[1]
-                damage_totals[attack_tuple[0]] = copy.deepcopy(summed_damage)
+                summed_damage[attack_tuple[2]] += attack_tuple[1]
+                damage_totals[attack_tuple[0]] = dict(summed_damage)
             for to_hit in sorted(damage_totals):
                 damage = ' +'.join(['%s %s' % (d, t) for (t, d) in damage_totals[to_hit].items()])
                 damage_sum = sum([d for d in damage_totals[to_hit].values()])
