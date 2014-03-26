@@ -7,13 +7,27 @@ import sys
 
 from collections import Counter
 
-BIGNUMBER = 1000
+BIG_NUMBER = 1000
+
+SIZE_MODIFIERS = { 'fine':        8,
+                   'diminutive':  4,
+                   'tiny':        2,
+                   'small':       1,
+                   'medium':      0,
+                   'large':      -1,
+                   'huge':       -2,
+                   'gargantuan': -4,
+                   'colossal':   -8
+                 }
 
 def roll(die, sides):
     r = 0
-    for i in range(die):
+    for _i in range(die):
         r += random.randint(1, sides)
     return r
+
+def stat_mod(stat_value):
+    return int((stat_value-10)/2)
 
 class Attack(object):
     def __init__(self, name, data):
@@ -71,18 +85,18 @@ class Attack(object):
             for hit_type, hit in self.data['hit'].items():
                 hit_roll = roll(1, 20)
                 if hit_roll == 20:
-                    attack['hit'][hit_type] = BIGNUMBER
+                    attack['hit'][hit_type] = BIG_NUMBER
                 elif hit_roll == 1:
-                    attack['hit'][hit_type] = -BIGNUMBER
+                    attack['hit'][hit_type] = -BIG_NUMBER
                 else:
                     attack['hit'][hit_type] = hit_roll+hit
 
                 if hit_type == 'ac' and hit_roll >= self.crit_range:
                     confirm_roll = roll(1, 20)
                     if confirm_roll == 20:
-                        critical['hit']['ac'] = BIGNUMBER
+                        critical['hit']['ac'] = BIG_NUMBER
                     elif confirm_roll == 1:
-                        critical['hit']['ac'] = -BIGNUMBER
+                        critical['hit']['ac'] = -BIG_NUMBER
                     else:
                         critical['hit']['ac'] = roll(1, 20)+hit
         except KeyError:
@@ -92,7 +106,7 @@ class Attack(object):
             attack['damage'][damage_type] = self._roll_damage_type(damage_type)
 
         if critical['hit']:
-            for i in range(self.crit_multiplier-1):
+            for _i in range(self.crit_multiplier-1):
                 for type in self.damage_types:
                     damage = self._roll_damage_type(type)
                     try:
@@ -112,7 +126,26 @@ class Character(object):
         self.attacks = {}
         self.attack_name_len = 0
 
+        stats = self.data['stats']
+        self.bab = stats.get('bab', 0)
+        self.size = stats.get('size', 'medium')
+        self.strength = stats.get('strength', 0)
+        self.melee_attack_mod = self.bab + stat_mod(self.strength) + SIZE_MODIFIERS[self.size]
+        self.cmb = self.bab + stat_mod(self.strength) - SIZE_MODIFIERS[self.size]
+
         for attack in self.data['attacks']:
+            try:
+                if 'ac' in self.data['attacks'][attack]['hit']:
+                    self.data['attacks'][attack]['hit']['ac'] += self.melee_attack_mod
+            except KeyError:
+                pass
+
+            try:
+                if 'cmd' in self.data['attacks'][attack]['hit']:
+                    self.data['attacks'][attack]['hit']['cmd'] += self.cmb
+            except KeyError:
+                pass
+
             self.attacks[attack] = Attack(attack, self.data['attacks'][attack])
 
         for attack in self.data['full_attack']:
@@ -162,7 +195,7 @@ class Character(object):
         # Prune attacks that depended on attacks that critically missed
         for attack in attacks.keys():
             try:
-                if 'depends' in self.data['full_attack'][attack] and attacks[attack]['hit']['ac'] == -BIGNUMBER:
+                if 'depends' in self.data['full_attack'][attack] and attacks[attack]['hit']['ac'] == -BIG_NUMBER:
                     del attacks[attack]
             except KeyError:
                 pass
@@ -171,7 +204,7 @@ class Character(object):
 
     def _print_attack_roll(self, attack, attack_name=None):
         try:
-            if attack['hit']['ac'] == -BIGNUMBER and attack_name:
+            if attack['hit']['ac'] == -BIG_NUMBER and attack_name:
                 print "%s critically missed!" % (attack_name.rjust(self.attack_name_len),)
                 return
         except KeyError:
@@ -195,7 +228,7 @@ class Character(object):
             attack_tuples[hit_type] = []
             for attack in single_attacks:
                 for ht, to_hit in attacks[attack]['hit'].items():
-                    if ht == hit_type and to_hit != -BIGNUMBER:
+                    if ht == hit_type and to_hit != -BIG_NUMBER:
                         for damage_type in attacks[attack]['damage']:
                             attack_tuples[hit_type].append((to_hit, attacks[attack]['damage'][damage_type], damage_type))
 
@@ -229,12 +262,13 @@ def main():
     args = p.parse_args()
 
     if args.uber:
-        global BIGNUMBER
-        BIGNUMBER = sys.maxint
+        global BIG_NUMBER
+        BIG_NUMBER = sys.maxint
 
     data = json.load(open(args.json_file))
     c = Character(data)
     c.full_attack()
+
 
 if __name__ == '__main__':
     main()
