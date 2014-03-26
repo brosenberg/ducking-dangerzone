@@ -33,6 +33,7 @@ class Attack(object):
     def __init__(self, name, data):
         self.name = name
         self.data = data
+
         try:
             self.crit_range = self.data['crit']['range']
         except KeyError:
@@ -41,6 +42,14 @@ class Attack(object):
             self.crit_multiplier = self.data['crit']['multiplier']
         except KeyError:
             self.crit_multiplier = 2
+
+        damage_mod = self.data.get('damage_mod', 0)
+        primary_damage_type = self.data['damage'][0].keys()[0]
+        try:
+            self.data['damage'][0][primary_damage_type]['modifier'] += damage_mod
+        except KeyError:
+            self.data['damage'][0][primary_damage_type]['modifier'] = damage_mod
+
         self.damage_types = {}
         for damage in self.data['damage']:
             for damage_type in damage:
@@ -129,22 +138,26 @@ class Character(object):
         stats = self.data['stats']
         self.bab = stats.get('bab', 0)
         self.size = stats.get('size', 'medium')
-        self.strength = stats.get('strength', 0)
+        self.strength = stats.get('strength', 10)
+        self.dexterity = stats.get('dexterity', 10)
         self.melee_attack_mod = self.bab + stat_mod(self.strength) + SIZE_MODIFIERS[self.size]
+        self.range_attack_mod = self.bab + stat_mod(self.dexterity) + SIZE_MODIFIERS[self.size]
         self.cmb = self.bab + stat_mod(self.strength) - SIZE_MODIFIERS[self.size]
 
-        for attack in self.data['attacks']:
-            try:
-                if 'ac' in self.data['attacks'][attack]['hit']:
-                    self.data['attacks'][attack]['hit']['ac'] += self.melee_attack_mod
-            except KeyError:
-                pass
+        self.finesse = stats.get('finesse')
 
-            try:
+        for attack in self.data['attacks']:
+            melee_attack = self.data['attacks'][attack].get('melee_attack', True)
+
+            if 'hit' in self.data['attacks'][attack]:
+                if 'ac' in self.data['attacks'][attack]['hit']:
+                    if melee_attack and not self.finesse:
+                        self.data['attacks'][attack]['hit']['ac'] += self.melee_attack_mod
+                    else:
+                        self.data['attacks'][attack]['hit']['ac'] += self.range_attack_mod
+
                 if 'cmd' in self.data['attacks'][attack]['hit']:
                     self.data['attacks'][attack]['hit']['cmd'] += self.cmb
-            except KeyError:
-                pass
 
             self.attacks[attack] = Attack(attack, self.data['attacks'][attack])
 
