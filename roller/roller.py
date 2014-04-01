@@ -3,6 +3,7 @@
 import argparse
 import json
 import random
+import re
 import sys
 
 from collections import Counter
@@ -270,7 +271,9 @@ class Character(object):
 
 def main():
     p = argparse.ArgumentParser(description="Destroy your enemies!")
+    p.add_argument('-e', '--enlarged', default=False, action='store_true', help='Enlarge Person modifier')
     p.add_argument('-j', '--json-file', type=str, required=True, help='JSON file to load stats from')
+    p.add_argument('-p', '--print-attacks', default=False, action='store_true', help='Print attacks')
     p.add_argument('-u', '--uber', default=False, action='store_true', help='You are incredibly high level')
     args = p.parse_args()
 
@@ -278,9 +281,17 @@ def main():
         global BIG_NUMBER
         BIG_NUMBER = sys.maxint
 
+    if args.enlarged:
+        t = re.split('.json',args.json_file)
+        args.json_file = t[0] + '-enlarged.json'
+
     data = json.load(open(args.json_file))
     c = Character(data)
-    c.full_attack()
+
+    if args.print_attacks:
+        print c
+    else:
+        c.full_attack()
 
 
 if __name__ == '__main__':

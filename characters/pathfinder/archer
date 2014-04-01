@@ -1,0 +1,38 @@
+Elven 8 Fighter (Archer)
+
+7d8+24 hp
+
+Str 14  Dex 20  Con 12  Wis 11  Int 10  Cha 7
+Fortitude +7  Reflex +7  Willpower +2
+CMB +10  CMD 25
+
+Abilities:
++10 range with Bows
+Perception +4
+Trick Shot (disarm): Can disarm targets with a bowshot within 30', -4 CMB
+Trick Shot (sunder): Can sunder targets with a bowshot within 30', -4 CMB
+
+Feats:
+1: Point-Blank Shot
+1F: Precise Shot
+2F: Deadly Aim
+3: Rapid Shot
+4F: Weapon Focus (Longbow)
+5: Weapon Specialization (Longbow)
+6F: Manyshot
+7: Clustered Shots
+8F: Improved Critical (Longbow)
+
++1 dmg/+1 hit (pbs)
++1 dmg/+1 hit (expert archer)
++1 hit (focus)
++2 dmg (spec)
++6 dmg/-3 hit (deadly aim)
+-2 hit (rapid shot)
+------------------------
++10 dmg/-2 hit (total)
+
+Composite Longbow (+2) Attacks:
++11 2d8+24 19-20/x3
++6 1d8+12 19-20/x3
++6 1d8+12 19-20/x3
