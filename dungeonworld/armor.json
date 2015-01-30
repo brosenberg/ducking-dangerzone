@@ -1,0 +1,133 @@
+{
+    "items": {
+        "Leather Armor": {
+            "armor": 1,
+            "coins": 10,
+            "weight": 1
+        },
+            
+        "Studded Leather": {
+            "armor": 1,
+            "coins": 12,
+            "weight": 1
+        },
+            
+        "Boiled Leather": {
+            "armor": 1,
+            "coins": 12,
+            "weight": 2
+        },
+            
+        "Wooden Armor": {
+            "armor": 1,
+            "coins": 10,
+            "weight": 2
+        },
+            
+        "Chainmail Hauberk": {
+            "armor": 1,
+            "coins": 15,
+            "weight": 2
+        },
+            
+        "Jack of Plate": {
+            "armor": 1,
+            "coins": 20,
+            "weight": 2
+        },
+            
+        "Full Chainmail": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 50,
+            "weight": 3
+        },
+            
+        "Breastplate": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 100,
+            "weight": 2
+        },
+            
+        "Lamellar": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 50,
+            "weight": 3
+        },
+            
+        "Brigandine": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 50,
+            "weight": 3
+        },
+            
+        "Scalemail": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 50,
+            "weight": 3
+        },
+            
+        "Splintmail": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 55,
+            "weight": 3
+        },
+            
+        "Bronze Platemail": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 150,
+            "weight": 4
+        },
+            
+        "Field Plate": {
+            "armor": 3,
+            "tags": [ "clumsy" ],
+            "coins": 350,
+            "weight": 4
+        },
+            
+        "Full Plate": {
+            "armor": 3,
+            "tags": [ "clumsy" ],
+            "coins": 500,
+            "weight": 5
+        }
+    },
+    "mods": {
+        "Bulky": {
+            "coins": {
+                "mult": 0.9
+            },
+            "tags": {
+                "append": "clumsy"
+            },
+            "weight": {
+                "add": 1,
+                "mult": 1.25
+            }
+        },
+        "Damaged": {
+            "armor": {
+                "mult": 0.5
+            },
+            "coins": {
+                "mult": 0.75
+            },
+            "tags": {
+                "append": "clumsy"
+            }
+        },
+        "Ornate": {
+            "coins": {
+                "add": 50,
+                "mult": 2
+            }
+        }
+    }
+}
