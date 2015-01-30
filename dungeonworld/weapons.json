@@ -1,5 +1,10 @@
 {
     "items": {
+        "Sling": {
+            "tags": ["near"],
+            "coins": 15,
+            "weight": 2
+        },
         "Ragged Bow": {
             "tags": ["near"],
             "coins": 15,
@@ -21,6 +26,11 @@
             "coins": 35,
             "weight": 3
         },
+        "Pouch of Sling Stones": {
+            "ammo": 3,
+            "coins": 1,
+            "weight": 1
+        },
         "Bundle of Arrows": {
             "ammo": 3,
             "coins": 1,
@@ -31,7 +41,12 @@
             "coins": 20,
             "weight": 1
         },
-        "Club": {
+        "Banded Club": {
+            "tags": ["close"],
+            "coins": 1,
+            "weight": 2
+        },
+        "Spiked Club": {
             "tags": ["close"],
             "coins": 1,
             "weight": 2
@@ -71,6 +86,11 @@
             "coins": 22,
             "weight": 1
         },
+        "Dart": {
+            "tags": ["thrown", "near"],
+            "coins": 1,
+            "weight": 0
+        },
         "Throwing Dagger": {
             "tags": ["thrown", "near"],
             "coins": 1,
@@ -83,6 +103,11 @@
         },
         "Axe": {
             "tags": ["close"],
+            "coins": 8,
+            "weight": 1
+        },
+        "Francisca": {
+            "tags": ["thrown", "close"],
             "coins": 8,
             "weight": 1
         },
@@ -101,9 +126,39 @@
             "coins": 8,
             "weight": 1
         },
+        "Spiked Mace": {
+            "tags": ["close"],
+            "coins": 8,
+            "weight": 1
+        },
+        "Flanged Mace": {
+            "tags": ["close"],
+            "coins": 8,
+            "weight": 1
+        },
+        "Javelin": {
+            "tags": ["reach", "thrown", "near"],
+            "coins": 5,
+            "weight": 1
+        },
         "Spear": {
             "tags": ["reach", "thrown", "near"],
             "coins": 5,
+            "weight": 1
+        },
+        "Boar Spear": {
+            "tags": ["reach", "thrown", "near"],
+            "coins": 5,
+            "weight": 1
+        },
+        "Trident": {
+            "tags": ["reach", "thrown", "near"],
+            "coins": 5,
+            "weight": 1
+        },
+        "Godendag": {
+            "tags": ["reach", "near"],
+            "coins": 4,
             "weight": 1
         },
         "Long Sword": {
@@ -117,6 +172,36 @@
             "damage bonus": 1,
             "coins": 12,
             "weight": 2
+        },
+        "Cutlass": {
+            "tags": ["close"],
+            "coins": 17,
+            "damage bonus": 1,
+            "weight": 1
+        },
+        "Falchion": {
+            "tags": ["close"],
+            "coins": 17,
+            "damage bonus": 1,
+            "weight": 1
+        },
+        "Sabre": {
+            "tags": ["close"],
+            "coins": 18,
+            "damage bonus": 1,
+            "weight": 1
+        },
+        "Shamshir": {
+            "tags": ["close"],
+            "coins": 16,
+            "damage bonus": 1,
+            "weight": 1
+        },
+        "Scimitar": {
+            "tags": ["close"],
+            "coins": 16,
+            "damage bonus": 1,
+            "weight": 1
         },
         "Battle Axe": {
             "tags": ["close"],
@@ -142,10 +227,34 @@
             "coins": 16,
             "weight": 2
         },
+        "Claymore": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 25,
+            "weight": 2
+        },
+        "Flamberge": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 30,
+            "weight": 2
+        },
+        "Maul": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 11,
+            "weight": 2
+        },
         "Halberd": {
             "tags": ["reach", "two-handed"],
             "damage bonus": 1,
-            "coins": 9,
+            "coins": 10,
+            "weight": 2
+        },
+        "Bardiche": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 10,
             "weight": 2
         },
         "Pike": {
@@ -157,25 +266,43 @@
         "Fauchard": {
             "tags": ["reach", "two-handed"],
             "damage bonus": 1,
-            "coins": 9,
+            "coins": 12,
             "weight": 2
         },
         "Glaive": {
             "tags": ["reach", "two-handed"],
             "damage bonus": 1,
-            "coins": 9,
+            "coins": 12,
             "weight": 2
         },
         "Guisarme": {
             "tags": ["reach", "two-handed"],
             "damage bonus": 1,
-            "coins": 9,
+            "coins": 12,
+            "weight": 2
+        },
+        "Voulge": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 12,
             "weight": 2
         },
         "Ranseur": {
             "tags": ["reach", "two-handed"],
             "damage bonus": 1,
-            "coins": 9,
+            "coins": 12,
+            "weight": 2
+        },
+        "Bec de Corbin": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 12,
+            "weight": 2
+        },
+        "Lucerne Hammer": {
+            "tags": ["reach", "two-handed"],
+            "damage bonus": 1,
+            "coins": 12,
             "weight": 2
         },
         "Rapier": {
@@ -184,6 +311,12 @@
             "weight": 1
         },
         "Dueling Rapier": {
+            "tags": ["close", "precise"],
+            "piercing": 1,
+            "coins": 50,
+            "weight": 2
+        },
+        "Estoc": {
             "tags": ["close", "precise"],
             "piercing": 1,
             "coins": 50,
