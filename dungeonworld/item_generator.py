@@ -8,18 +8,22 @@ def print_item(item_name, item):
 
 def mod_item(item, mod):
     for category in mod:
-        if category in item:
-            for change in mod[category]:
-                if change == 'add':
-                    item[category] += mod[category][change]
-                if change == 'mult':
-                    item[category] = int(item[category]*mod[category][change])
-                if change == 'append':
-                    try:
-                        item[category] = set(item[category])
-                        item[category].add(mod[category][change])
-                    except TypeError:
-                        pass
+        if category not in item:
+            if 'append' in mod[category]:
+                item[category] = set()
+            else:
+                item[category] = 0
+        for change in mod[category]:
+            if change == 'add':
+                item[category] += mod[category][change]
+            if change == 'mult':
+                item[category] = int(item[category]*mod[category][change])
+            if change == 'append':
+                try:
+                    item[category] = set(item[category])
+                    item[category].add(mod[category][change])
+                except TypeError:
+                    pass
     return item
 
 class ItemGenerator(object):
@@ -43,4 +47,6 @@ class ItemGenerator(object):
 
 if __name__ == "__main__":
     armor = ItemGenerator("armor.json")
+    weapons = ItemGenerator("weapons.json")
     print_item( *armor.generate())
+    print_item( *weapons.generate())

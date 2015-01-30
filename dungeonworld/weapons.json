@@ -1,0 +1,127 @@
+{
+    "items": {
+        "Ragged Bow": {
+             "tags": ["near"], "coins": 15, "weight": 2
+        },
+        "Fine Bow": {
+             "tags": ["near", "far"], "coins": 60, "weight": 2
+        },
+        "Hunter’s Bow": {
+             "tags": ["near", "far"], "coins": 100, "weight": 1
+        },
+        "Crossbow": {
+             "tags": ["near", "reload"], "damage bonus": 1, "coins": 35, "weight": 3
+        },
+        "Bundle of Arrows": {
+             "ammo": 3, "coins": 1, "weight": 1
+        },
+        "Elven Arrows": {
+             "ammo": 4, "coins": 20, "weight": 1
+        },
+        "Club": {
+             "tags": ["close"], "coins": 1, "weight": 2
+        },
+        "Shillelagh": {
+             "tags": ["close"], "coins": 1, "weight": 2
+        },
+        "Staff": {
+             "tags": ["close", "two-handed"], "coins": 1, "weight": 1
+        },
+        "Brass Knuckles": {
+             "tags": ["hand"], "coins": 2, "weight": 1
+        },
+        "Dagger": {
+             "tags": ["hand"], "coins": 2, "weight": 1
+        },
+        "Shiv": {
+             "tags": ["hand"], "coins": 1, "weight": 1
+        },
+        "Knife": {
+             "tags": ["hand"], "coins": 2, "weight": 1
+        },
+        "Stiletto": {
+             "tags": ["hand", "precise"], "coins": 22, "weight": 1
+        },
+        "Throwing Dagger": {
+             "tags": ["thrown", "near"], "coins": 1, "weight": 0
+        },
+        "Short Sword": {
+             "tags": ["close"], "coins": 8, "weight": 1
+        },
+        "Axe": {
+             "tags": ["close"], "coins": 8, "weight": 1
+        },
+        "Warhammer": {
+             "tags": ["close"], "coins": 8, "weight": 1
+        },
+        "War Pick": {
+             "tags": ["close"], "coins": 8, "weight": 1
+        },
+        "Mace": {
+             "tags": ["close"], "coins": 8, "weight": 1
+        },
+        "Spear": {
+             "tags": ["reach", "thrown", "near"], "coins": 5, "weight": 1
+        },
+        "Long Sword": {
+             "tags": ["close"], "damage bonus": 1, "coins": 15, "weight": 2
+        },
+        "Broad Sword": {
+             "tags": ["close"], "damage bonus": 1, "coins": 12, "weight": 2
+        },
+        "Battle Axe": {
+             "tags": ["close"], "damage bonus": 1, "coins": 15, "weight": 2
+        },
+        "Beared Axe": {
+             "tags": ["close"], "damage bonus": 1, "coins": 15, "weight": 2
+        },
+        "Flail": {
+             "tags": ["close"], "damage bonus": 1, "coins": 15, "weight": 2
+        },
+        "Morningstar": {
+             "tags": ["close"], "damage bonus": 1, "coins": 16, "weight": 2
+        },
+        "Halberd": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Pike": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Fauchard": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Glaive": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Guisarme": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Ranseur": {
+             "tags": ["reach", "two-handed"], "damage bonus": 1, "coins": 9, "weight": 2
+        },
+        "Rapier": {
+             "tags": ["close", "precise"], "coins": 25, "weight": 1
+        },
+        "Dueling Rapier": {
+             "tags": ["close", "precise"], "piercing": 1, "coins": 50, "weight": 2
+        }
+    },
+    "mods": {
+        "+1": {
+            "coins": {
+                "add": 200
+            },
+            "damage bonus": {
+                "add": 1
+            }
+        },
+        "Keen": {
+            "coins": {
+                "add": 500
+            },
+            "piercing": {
+                "add": 1
+            }
+        }
+    }
+}
