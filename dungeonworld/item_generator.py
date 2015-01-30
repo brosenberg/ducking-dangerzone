@@ -3,8 +3,14 @@
 import json
 import random
 
+def clean_list(s):
+    if type(s) is list or type(s) is set:
+        return ", ".join(s)
+    else:
+        return s
+
 def print_item(item_name, item):
-    print "%s: %s" % (item_name, ", ".join("%s: %s" % (x, item[x]) for x in item))
+    print "%s: %s" % (item_name, ", ".join("%s: %s" % (x, clean_list(item[x])) for x in item))
 
 def mod_item(item, mod):
     for category in mod:

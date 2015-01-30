@@ -78,13 +78,6 @@
             "weight": 3
         },
             
-        "Bronze Platemail": {
-            "armor": 2,
-            "tags": [ "clumsy" ],
-            "coins": 150,
-            "weight": 4
-        },
-            
         "Field Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
@@ -121,6 +114,44 @@
             },
             "tags": {
                 "append": "clumsy"
+            }
+        },
+        "Adamantium": {
+            "armor": {
+                "add": 1
+            },
+            "coins": {
+                "add": 30,
+                "mult": 21
+            },
+            "weight": {
+                "mult": 1.1
+            }
+        },
+        "Bronze": {
+            "armor": {
+                "mult": 0.9
+            },
+            "coins": {
+                "mult": 0.6
+            }
+        },
+        "Electrum": {
+            "coins": {
+                "add": 15,
+                "mult": 7
+            },
+            "weight": {
+                "mult": 0.9
+            }
+        },
+        "Mithril": {
+            "coins": {
+                "add": 20,
+                "mult": 20
+            },
+            "weight": {
+                "mult": 0.7
             }
         },
         "Ornate": {
