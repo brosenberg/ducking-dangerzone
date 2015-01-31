@@ -13,6 +13,9 @@ def print_items(items):
     for item in items:
         print item
 
+class NoModsFound(Exception):
+    pass
+
 class Item(object):
     def __init__(self, name, data):
         self.name = name
@@ -24,7 +27,7 @@ class Item(object):
         for attribute in self.data:
             if not attribute.startswith("_"):
                 attributes.append("%s: %s" % (attribute, clean_list(self.data[attribute])))
-        return "%s: %s" % (self.name, ", ".join(sorted(attributes)))
+        return "%s  %s" % (self.name, "  ".join(sorted(attributes)))
 
     def mod(self, mod_name, mod):
         self.name = "%s %s" % (mod_name, self.name)
@@ -71,8 +74,11 @@ class ItemGenerator(object):
 
         mod_roll = random.randint(1, 100)
         if mod_roll <= mod_chance:
-            mod, mod_data = self.random_mod(item.index_name, item_list=item_list)
-            item.mod(mod, mod_data)
+            try:
+                mod, mod_data = self.random_mod(item.index_name, item_list=item_list)
+                item.mod(mod, mod_data)
+            except NoModsFound:
+                pass
 
         gen_list = self.json[item_list][item.index_name]["_meta"].get("generate")
         if gen_list:
@@ -98,6 +104,8 @@ class ItemGenerator(object):
                 mod_list.update(self.json["mods"][meta])
             except KeyError:
                 pass
+        if len(mod_list.keys()) == 0:
+            raise NoModsFound
         mod = random.choice(mod_list.keys())
         mod_data = mod_list[mod]
 
@@ -107,9 +115,13 @@ class ItemGenerator(object):
 if __name__ == "__main__":
     armor = ItemGenerator("armor.json")
     weapons = ItemGenerator("weapons.json")
+    shield = ItemGenerator("shields.json")
+
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )
     print "-- Random Weapon --"
     print_items( weapons.generate(mod_chance=100) )
     print "-- Random Bow Ammo --"
     print_items( weapons.generate(item_list="ammo:bow", mod_chance=100) )
+    print "-- Random Shield --"
+    print_items( shield.generate(mod_chance=100) )

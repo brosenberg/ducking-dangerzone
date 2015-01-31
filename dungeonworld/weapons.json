@@ -670,6 +670,21 @@
                 "tags": {
                     "append": "gaudy"
                 }
+            },
+            "Silver": {
+                "coins": {
+                    "add": 10,
+                    "mult": 2
+                },
+                "damage": {
+                    "add": -1
+                },
+                "tags": {
+                    "append": "gaudy"
+                },
+                "weight": {
+                    "mult": 1.2
+                }
             }
         },
         "wood": {
