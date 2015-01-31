@@ -1,5 +1,101 @@
 {
     "items": {
+        "Tunic and skirt": {
+            "coins": 2,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Shirt and breeches": {
+            "coins": 2,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Cloak, tunic, and skirt": {
+            "coins": 6,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Cloak, shirt, and breeches": {
+            "coins": 6,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Cloak, tunic, and breeches": {
+            "coins": 8,
+            "weight": 1,
+            "_meta": {
+                "material": "fur",
+                "type": "clothing"
+            }
+        },
+        "Jacket and breeches": {
+            "coins": 10,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "cloth"
+            }
+        },
+        "Jacket and pantaloons": {
+            "coins": 12,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "leather"
+            }
+        },
+        "Gown": {
+            "coins": 2,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Dress": {
+            "coins": 2,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Simple Robes": {
+            "coins": 2,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Embroidered Robes": {
+            "coins": 15,
+            "weight": 1,
+            "_meta": {
+                "material": "cloth",
+                "type": "clothing"
+            }
+        },
+        "Furs": {
+            "coins": 25,
+            "weight": 1,
+            "_meta": {
+                "material": "fur",
+                "type": "clothing"
+            }
+        },
         "Leather Armor": {
             "armor": 1,
             "coins": 10,
@@ -171,10 +267,60 @@
                     "mult": 10
                 }
             },
+            "Multicolored": {
+                "coins": {
+                    "add": 4,
+                    "mult": 1.1
+                },
+                "tags": {
+                    "append": "gaudy"
+                }
+            },
             "Ornate": {
                 "coins": {
                     "add": 50,
                     "mult": 4
+                },
+                "tags": {
+                    "append": "gaudy"
+                }
+            }
+        },
+        "cloth": {
+            "Coarse": {
+                "coins": {
+                    "mult": 0.8
+                }
+            },
+            "Fine": {
+                "coins": {
+                    "mult": 1.2
+                }
+            },
+            "Patchwork": {
+                "coins": {
+                    "mult": 0.7
+                }
+            },
+            "Silk": {
+                "coins": {
+                    "mult": 5
+                },
+                "weight": {
+                    "mult": 0.8
+                }
+            }
+        },
+        "fur": {
+            "Wolf skin": {
+                "coins": {
+                    "mult": 1.1
+                }
+            },
+            "Ermine": {
+                "coins": {
+                    "add": 10,
+                    "mult": 8
                 }
             }
         },
