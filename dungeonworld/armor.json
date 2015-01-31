@@ -3,161 +3,230 @@
         "Leather Armor": {
             "armor": 1,
             "coins": 10,
-            "weight": 1
+            "weight": 1,
+            "_meta": {
+                "material": "leather",
+                "type": "armor"
+            }
         },
             
         "Studded Leather": {
             "armor": 1,
             "coins": 12,
-            "weight": 1
+            "weight": 1,
+            "_meta": {
+                "material": "leather",
+                "type": "armor"
+            }
         },
             
         "Boiled Leather": {
             "armor": 1,
             "coins": 12,
-            "weight": 2
+            "weight": 2,
+            "_meta": {
+                "material": "leather",
+                "type": "armor"
+            }
         },
             
         "Wooden Armor": {
             "armor": 1,
             "coins": 10,
-            "weight": 2
+            "weight": 2,
+            "_meta": {
+                "material": "wood",
+                "type": "armor"
+            }
         },
             
         "Chainmail Hauberk": {
             "armor": 1,
             "coins": 15,
-            "weight": 2
+            "weight": 2,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Jack of Plate": {
             "armor": 1,
             "coins": 20,
-            "weight": 2
+            "weight": 2,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Full Chainmail": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 50,
-            "weight": 3
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Breastplate": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 100,
-            "weight": 2
+            "weight": 2,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Lamellar": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 50,
-            "weight": 3
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Brigandine": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 50,
-            "weight": 3
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Scalemail": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 50,
-            "weight": 3
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Splintmail": {
             "armor": 2,
             "tags": [ "clumsy" ],
             "coins": 55,
-            "weight": 3
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Field Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
             "coins": 350,
-            "weight": 4
+            "weight": 4,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         },
             
         "Full Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
             "coins": 500,
-            "weight": 5
+            "weight": 5,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
         }
     },
     "mods": {
-        "Bulky": {
-            "coins": {
-                "mult": 0.9
+        "general": {
+            "Bulky": {
+                "coins": {
+                    "mult": 0.9
+                },
+                "tags": {
+                    "append": "clumsy"
+                },
+                "weight": {
+                    "add": 1,
+                    "mult": 1.25
+                }
             },
-            "tags": {
-                "append": "clumsy"
+            "Damaged": {
+                "armor": {
+                    "mult": 0.5
+                },
+                "coins": {
+                    "mult": 0.75
+                },
+                "tags": {
+                    "append": "clumsy"
+                }
             },
-            "weight": {
-                "add": 1,
-                "mult": 1.25
+            "Enchanted": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 20,
+                    "mult": 10
+                }
+            },
+            "Ornate": {
+                "coins": {
+                    "add": 50,
+                    "mult": 2
+                }
             }
         },
-        "Damaged": {
-            "armor": {
-                "mult": 0.5
+        "metal": {
+            "Adamantium": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 30,
+                    "mult": 21
+                },
+                "weight": {
+                    "mult": 1.1
+                }
             },
-            "coins": {
-                "mult": 0.75
+            "Bronze": {
+                "armor": {
+                    "mult": 0.9
+                },
+                "coins": {
+                    "mult": 0.6
+                }
             },
-            "tags": {
-                "append": "clumsy"
-            }
-        },
-        "Adamantium": {
-            "armor": {
-                "add": 1
+            "Electrum": {
+                "coins": {
+                    "add": 15,
+                    "mult": 7
+                },
+                "weight": {
+                    "mult": 0.9
+                }
             },
-            "coins": {
-                "add": 30,
-                "mult": 21
-            },
-            "weight": {
-                "mult": 1.1
-            }
-        },
-        "Bronze": {
-            "armor": {
-                "mult": 0.9
-            },
-            "coins": {
-                "mult": 0.6
-            }
-        },
-        "Electrum": {
-            "coins": {
-                "add": 15,
-                "mult": 7
-            },
-            "weight": {
-                "mult": 0.9
-            }
-        },
-        "Mithril": {
-            "coins": {
-                "add": 20,
-                "mult": 20
-            },
-            "weight": {
-                "mult": 0.7
-            }
-        },
-        "Ornate": {
-            "coins": {
-                "add": 50,
-                "mult": 2
+            "Mithril": {
+                "coins": {
+                    "add": 20,
+                    "mult": 20
+                },
+                "weight": {
+                    "mult": 0.7
+                }
             }
         }
     }

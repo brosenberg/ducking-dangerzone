@@ -1,0 +1,20 @@
+{
+    "items": {
+        "Round Shield": {
+             "armor bonus": 1,
+             "coins": 15,
+             "weight": 2
+        },
+        "Kite Shield": {
+             "armor bonus": 1,
+             "coins": 15,
+             "weight": 2
+        },
+        "Tower Shield": {
+             "armor bonus": 2,
+             "tags": ["clumsy"],
+             "coins": 50,
+             "weight": 3
+        }
+    }
+}
