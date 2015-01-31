@@ -32,7 +32,7 @@ class Item(object):
             if attribute.startswith("_"):
                 continue
             if attribute not in self.data:
-                if 'append' in mod[attribute]:
+                if 'append' in mod[attribute] or 'remove' in mod[attribute]:
                     self.data[attribute] = set()
                 else:
                     self.data[attribute] = 0
@@ -45,6 +45,14 @@ class Item(object):
                     try:
                         self.data[attribute] = set(self.data[attribute])
                         self.data[attribute].add(mod[attribute][change])
+                    except TypeError:
+                        pass
+                if change == 'remove':
+                    try:
+                        self.data[attribute] = set(self.data[attribute])
+                        self.data[attribute].remove(mod[attribute][change])
+                    except KeyError:
+                        pass
                     except TypeError:
                         pass
 

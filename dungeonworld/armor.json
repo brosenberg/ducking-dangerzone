@@ -9,7 +9,6 @@
                 "type": "armor"
             }
         },
-            
         "Studded Leather": {
             "armor": 1,
             "coins": 12,
@@ -19,7 +18,6 @@
                 "type": "armor"
             }
         },
-            
         "Boiled Leather": {
             "armor": 1,
             "coins": 12,
@@ -29,7 +27,6 @@
                 "type": "armor"
             }
         },
-            
         "Wooden Armor": {
             "armor": 1,
             "coins": 10,
@@ -39,7 +36,6 @@
                 "type": "armor"
             }
         },
-            
         "Chainmail Hauberk": {
             "armor": 1,
             "coins": 15,
@@ -49,7 +45,6 @@
                 "type": "armor"
             }
         },
-            
         "Jack of Plate": {
             "armor": 1,
             "coins": 20,
@@ -59,7 +54,6 @@
                 "type": "armor"
             }
         },
-            
         "Full Chainmail": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -70,7 +64,6 @@
                 "type": "armor"
             }
         },
-            
         "Breastplate": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -81,7 +74,6 @@
                 "type": "armor"
             }
         },
-            
         "Lamellar": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -92,7 +84,6 @@
                 "type": "armor"
             }
         },
-            
         "Brigandine": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -103,7 +94,6 @@
                 "type": "armor"
             }
         },
-            
         "Scalemail": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -114,7 +104,6 @@
                 "type": "armor"
             }
         },
-            
         "Splintmail": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -125,7 +114,6 @@
                 "type": "armor"
             }
         },
-            
         "Field Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
@@ -136,7 +124,6 @@
                 "type": "armor"
             }
         },
-            
         "Full Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
@@ -185,7 +172,23 @@
             "Ornate": {
                 "coins": {
                     "add": 50,
-                    "mult": 2
+                    "mult": 4
+                }
+            }
+        },
+        "leather": {
+            "Dragon hide": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 50,
+                    "mult": 20
+                }
+            },
+            "Horse hide": {
+                "coins": {
+                    "add": 2
                 }
             }
         },
@@ -204,16 +207,33 @@
             },
             "Bronze": {
                 "armor": {
-                    "mult": 0.9
+                    "add": -1
+                },
+                "coins": {
+                    "mult": 0.7
+                }
+            },
+            "Copper": {
+                "armor": {
+                    "add": -1
                 },
                 "coins": {
                     "mult": 0.6
                 }
             },
+            "Dragon Scale": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 40,
+                    "mult": 21
+                }
+            },
             "Electrum": {
                 "coins": {
                     "add": 15,
-                    "mult": 7
+                    "mult": 5
                 },
                 "weight": {
                     "mult": 0.9
@@ -224,8 +244,25 @@
                     "add": 20,
                     "mult": 20
                 },
+                "tags": {
+                    "remove": "clumsy"
+                },
                 "weight": {
                     "mult": 0.7
+                }
+            }
+        },
+        "wood": {
+            "Myrnith": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 20,
+                    "mult": 10
+                },
+                "weight": {
+                    "mult": 0.8
                 }
             }
         }
