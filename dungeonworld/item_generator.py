@@ -92,6 +92,8 @@ class ItemGenerator(object):
         mod_list = self.json["mods"]["general"]
 
         for meta in self.json[item_list][item]["_meta"].values():
+            if type(meta) is list:
+                continue
             try:
                 mod_list.update(self.json["mods"][meta])
             except KeyError:

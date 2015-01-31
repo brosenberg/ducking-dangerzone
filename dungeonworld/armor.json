@@ -27,6 +27,7 @@
                 "type": "armor"
             }
         },
+
         "Wooden Armor": {
             "armor": 1,
             "coins": 10,
@@ -36,6 +37,7 @@
                 "type": "armor"
             }
         },
+
         "Chainmail Hauberk": {
             "armor": 1,
             "coins": 15,
@@ -253,6 +255,21 @@
             }
         },
         "wood": {
+            "Ironwood": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 5,
+                    "mult": 10
+                },
+                "tags": {
+                    "append": "clumsy"
+                },
+                "weight": {
+                    "add": 1
+                }
+            },
             "Myrnith": {
                 "armor": {
                     "add": 1

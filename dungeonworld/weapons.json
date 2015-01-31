@@ -589,6 +589,22 @@
                 }
             }
         },
+        "leather": {
+            "Dragon hide": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 50,
+                    "mult": 20
+                }
+            },
+            "Horse hide": {
+                "coins": {
+                    "add": 2
+                }
+            }
+        },
         "metal": {
             "Adamantium": {
                 "coins": {
@@ -653,6 +669,32 @@
                 },
                 "tags": {
                     "append": "gaudy"
+                }
+            }
+        },
+        "wood": {
+            "Ironwood": {
+                "coins": {
+                    "add": 5,
+                    "mult": 10
+                },
+                "damage": {
+                    "add": 1
+                },
+                "weight": {
+                    "add": 1
+                }
+            },
+            "Myrnith": {
+                "armor": {
+                    "add": 1
+                },
+                "coins": {
+                    "add": 20,
+                    "mult": 10
+                },
+                "weight": {
+                    "mult": 0.8
                 }
             }
         }
