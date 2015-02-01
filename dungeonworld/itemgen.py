@@ -27,7 +27,7 @@ class Item(object):
         for attribute in self.data:
             if not attribute.startswith("_"):
                 attributes.append("%s: %s" % (attribute, clean_list(self.data[attribute])))
-        return "%s  %s" % (self.name, "  ".join(sorted(attributes)))
+        return "%s (%s)" % (self.name, "  ".join(sorted(attributes)))
 
     def mod(self, mod_name, mod):
         self.name = "%s %s" % (mod_name, self.name)

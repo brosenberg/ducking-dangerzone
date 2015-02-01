@@ -356,7 +356,7 @@
             },
             "Bronze": {
                 "armor": {
-                    "add": -1
+                    "mult": 0.8
                 },
                 "coins": {
                     "mult": 0.7
@@ -364,7 +364,7 @@
             },
             "Copper": {
                 "armor": {
-                    "add": -1
+                    "mult": 0.7
                 },
                 "coins": {
                     "mult": 0.6

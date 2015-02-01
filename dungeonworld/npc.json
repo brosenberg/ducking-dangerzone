@@ -20,15 +20,15 @@
         "accomplishing good",
         "revenge"
     ],
-    "skills": [
-        "Adept",
-        "Burglar",
-        "Minstrel",
-        "Priest",
-        "Protector",
-        "Tracker",
-        "Warrior"
-    ],
+    "skills": {
+        "Adept": ["Bag of Books"],
+        "Burglar": ["Adventuring Gear", "Oil of Tagit"],
+        "Minstrel": ["Mandolin", "Lute", "Horn", "Fiddle", "Songbook"],
+        "Priest": ["Bandages", "Poultices and Herbs"],
+        "Protector": ["Healing Potion", "Dungeon Rations"],
+        "Tracker": ["Adventuring Gear", "Dungeon Rations"],
+        "Warrior": ["Healing Potion", "Dungeon Rations"]
+    },
     "elf female first name": [
         "Alhoro",
         "Damarra",
@@ -145,7 +145,7 @@
         "Bitterbeard",
         "Coalheart",
         "Baldricsen/Baldricsdottir",
-        "Rurgoshsen/Rurgoshsdottir",
+        "Rurgossen/Rurgoshsdottir",
         "Bjornsen/Bjornsdottir",
         "Dagoliirsen/Dagoliirsdottir",
         "Dimsen/Dimsdottir",
@@ -157,7 +157,7 @@
         "Pendrellsen/Pendrellsdottir",
         "Poysen/Poysdottir",
         "Hycoraxsen/Hycoraxsdottir",
-        "Janossen/Janossdottir",
+        "Janossen/Janosdottir",
         "Jarlsen/Jarlsdottir"
     ],
     "halfling female first name": [
