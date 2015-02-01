@@ -11,6 +11,70 @@
         "human",
         "native"
     ],
+    "eye type": [
+        "wise",
+        "crazed",
+        "haunted",
+        "kind",
+        "knowing",
+        "sad",
+        "hard",
+        "dead",
+        "eager",
+        "glowing",
+        "wild",
+        "suspicious"
+    ],
+    "eye color": [
+        "blue",
+        "green",
+        "brown",
+        "hazel",
+        "grey",
+        "black",
+        "red",
+        "blood shot"
+    ],
+    "hair color": [
+        "brown",
+        "black",
+        "blonde",
+        "auburn",
+        "red",
+        "grey",
+        "white"
+    ],
+    "hair style": [
+        "bald",
+        "balding",
+        "cropped",
+        "long and braided",
+        "short and braided",
+        "long and curly",
+        "short and curly",
+        "long and wavy",
+        "short and wavy",
+        "long and straight",
+        "short and straight"
+    ],
+    "skin": [
+        "pale",
+        "fair",
+        "tanned",
+        "dark",
+        "scarred",
+        "tattooed",
+        "dirty"
+    ],
+    "build": [
+        "emaciated",
+        "thin",
+        "flabby",
+        "fit",
+        "muscular",
+        "bulky",
+        "corpulent"
+    ],
     "goal": [
         "the thrill of victory",
         "money",
@@ -89,7 +153,7 @@
         "to raise dragons",
         "to live up to expectations",
         "to become someone else",
-        "to do what can’t be done",
+        "to do what can't be done",
         "to be remembered in song",
         "to be forgotten",
         "to find true love",
@@ -120,13 +184,34 @@
         "to run away"
     ],
     "skills": {
-        "Adept": ["Bag of Books", "Poultices and Herbs"],
-        "Burglar": ["Adventuring Gear", "Oil of Tagit"],
-        "Minstrel": ["Mandolin", "Lute", "Horn", "Fiddle", "Songbook"],
-        "Priest": ["Bandages", "Poultices and Herbs", "Holy Symbol"],
-        "Protector": ["Healing Potion", "Dungeon Rations"],
-        "Tracker": ["Adventuring Gear", "Dungeon Rations"],
-        "Warrior": ["Healing Potion", "Dungeon Rations"]
+        "Adept": {
+            "damage_die": "d4",
+            "items": ["Bag of Books", "Poultices and Herbs"]
+        },
+        "Burglar": {
+            "damage_die": "d8",
+            "items": ["Adventuring Gear", "Oil of Tagit"]
+        },
+        "Minstrel": {
+            "damage_die": "d6",
+            "items": ["Mandolin", "Lute", "Horn", "Fiddle", "Songbook"]
+        },
+        "Priest": {
+            "damage_die": "d6",
+            "items": ["Bandages", "Poultices and Herbs", "Holy Symbol"]
+        },
+        "Protector": {
+            "damage_die": "d10",
+            "items": ["Healing Potion", "Dungeon Rations"]
+        },
+        "Tracker": {
+            "damage_die": "d8",
+            "items": ["Adventuring Gear", "Dungeon Rations"]
+        },
+        "Warrior": {
+            "damage_die": "d10",
+            "items": ["Healing Potion", "Dungeon Rations"]
+        }
     },
     "knacks": [
         "criminal connections",
@@ -276,7 +361,7 @@
         "Hawksong",
         "Ilbenalu",
         "Ithruen",
-        "Kelpor’ral",
+        "Kelpor'ral",
         "Keove",
         "Laralytha",
         "Maendellyn",
