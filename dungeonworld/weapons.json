@@ -557,20 +557,6 @@
         }
     },
     "mods": {
-        "arrows": {
-            "Broadhead": {
-                "ammo": {
-                    "add": -1
-                },
-                "coins": {
-                    "add": 4,
-                    "mult": 1.5 
-                },
-                "damage bonus": {
-                    "add": 1
-                }
-            }
-        },
         "general": {
             "Damaged": {
                 "coins": {
@@ -584,6 +570,29 @@
                 "coins": {
                     "add": 20,
                     "mult": 10
+                },
+                "damage bonus": {
+                    "add": 1
+                }
+            },
+            "Perfectly Balanced": {
+                "coins": {
+                    "add": 30,
+                    "mult": 3
+                },
+                "tags": {
+                    "append": "precise"
+                }
+            }
+        },
+        "arrows": {
+            "Broadhead": {
+                "ammo": {
+                    "add": -1
+                },
+                "coins": {
+                    "add": 4,
+                    "mult": 1.5
                 },
                 "damage bonus": {
                     "add": 1
