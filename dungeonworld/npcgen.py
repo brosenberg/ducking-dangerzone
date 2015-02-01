@@ -11,13 +11,24 @@ class NPCGenerator(object):
 
     def __str__(self):
         return """%s %s is a %s %s %s whose desire is %s.
-%s has %s %s eyes and %s skin covering their %s body.
+%s has %s %s eyes, and %s skin covering their %s body.
 Their special knack is %s.
 
 Hitpoints: %s
 Damage: %s
 Skills: %s
-Salary: %s""" % (self.first_name,
+
+Coins: %s
+Salary: %s
+
+Wearing:
+%s
+
+Wielding:
+%s
+
+Inventory:
+%s""" % (self.first_name,
         self.last_name,
         self.gender,
         self.race,
@@ -32,7 +43,11 @@ Salary: %s""" % (self.first_name,
         self.hitpoints,
         self.damage_die,
         "  ".join(["%s: %s" % (x, self.skills[x]) for x in self.skills]),
-        self.salary)
+        self.coins,
+        self.salary,
+        "\n".join([str(x) for x in self.armor]),
+        "\n".join([str(x) for x in self.wielding]),
+        "\n".join(self.inventory))
 
     def generate(self):
         self.gender = random.choice(self.json["gender"])
@@ -57,6 +72,8 @@ Salary: %s""" % (self.first_name,
         skill_points = random.randint(2, 10)
         self.salary = int(random.uniform(0.75, 4) * skill_points)
         self.hitpoints = int(random.uniform(1.25, 2.25) * skill_points)
+        self.wealth = int(random.triangular(0, 10, skill_points))
+        self.coins = 0
 
         loyalty_max = skill_points-1 if skill_points-1<=4 else 4
         self.skills = { "Loyalty": random.randint(-1, loyalty_max) }
@@ -75,30 +92,46 @@ Salary: %s""" % (self.first_name,
         if self.skills[self.profession] > 5:
             self.damage_die = "b[2%s]" % (self.damage_die,)
 
+        self.armor = None
+        self.wielding = None
+
+    def equip_thyself(self, weapongen, armorgen, shieldgen):
+        one_handed = lambda x: not "two-handed" in x[0].data['tags'] and x[0].data['_meta']['type'] == "melee"
+
+        self.armor = armorgen.generate()
+        self.wielding = weapongen.generate()
+        # See if the weapon is a one handed melee weapon
+        if one_handed(self.wielding):
+            roll = random.randint(0,4)
+            if roll == 4:
+                offhand = weapongen.generate()
+                # FIXME: This is awful. ItemGenerator should be able to do this automatically.
+                while not one_handed(offhand):
+                    offhand = weapongen.generate()
+                self.wielding += offhand
+            elif roll:
+                self.wielding += shieldgen.generate()
+
+    def spend_wealth(self, generators, coin_chance=60):
+        while self.wealth:
+            roll = random.randint(1,100)
+            if roll <= coin_chance:
+                self.coins += int(random.triangular(1, 10, 1))
+            else:
+                for item in random.choice(generators).generate(mod_chance=10+self.wealth):
+                    self.inventory.append(str(item))
+            self.wealth -= 1
 
 if __name__ == "__main__":
     npc = NPCGenerator()
     armorgen = itemgen.ItemGenerator("armor.json")
     weapongen = itemgen.ItemGenerator("weapons.json")
     shieldgen = itemgen.ItemGenerator("shields.json")
+    geargen = itemgen.ItemGenerator("gear.json")
 
-    armor = armorgen.generate()
-    weapon = weapongen.generate()
-    shield = None
-    if not "two-handed" in weapon[0].data['tags'] and weapon[0].data['_meta']['type'] == "melee" and random.randint(0,3):
-        shield = shieldgen.generate()
+    npc.equip_thyself(weapongen, armorgen, shieldgen)
+    npc.spend_wealth([weapongen, geargen])
 
     print '-'*80
     print npc
-    print
-    print "Wearing:"
-    itemgen.print_items(armor)
-    print
-    print "Wielding:"
-    itemgen.print_items(weapon)
-    if shield is not None:
-        itemgen.print_items(shield)
-    print
-    print "Inventory:"
-    print "\n".join(npc.inventory)
     print '-'*80

@@ -116,6 +116,7 @@ if __name__ == "__main__":
     armor = ItemGenerator("armor.json")
     weapons = ItemGenerator("weapons.json")
     shield = ItemGenerator("shields.json")
+    gear = ItemGenerator("gear.json")
 
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )
@@ -125,3 +126,5 @@ if __name__ == "__main__":
     print_items( weapons.generate(item_list="ammo:bow", mod_chance=100) )
     print "-- Random Shield --"
     print_items( shield.generate(mod_chance=100) )
+    print "-- Random Gear --"
+    print_items( gear.generate(mod_chance=100) )
