@@ -566,7 +566,7 @@
                     "add": 4,
                     "mult": 1.5 
                 },
-                "damage": {
+                "damage bonus": {
                     "add": 1
                 }
             }
@@ -576,7 +576,7 @@
                 "coins": {
                     "mult": 0.75
                 },
-                "damage": {
+                "damage bonus": {
                     "add": -1
                 }
             },
@@ -623,7 +623,7 @@
                 "coins": {
                     "mult": 0.6
                 },
-                "damage": {
+                "damage bonus": {
                     "add": -1
                 }
             },
@@ -641,7 +641,7 @@
                     "add": 10,
                     "mult": 8
                 },
-                "damage": {
+                "damage bonus": {
                     "add": 1
                 },
                 "tags": {
@@ -653,7 +653,7 @@
                     "add": 30,
                     "mult": 14
                 },
-                "damage": {
+                "damage bonus": {
                     "add": -2
                 },
                 "tags": {
@@ -677,7 +677,7 @@
                     "add": 10,
                     "mult": 2
                 },
-                "damage": {
+                "damage bonus": {
                     "add": -1
                 },
                 "tags": {
@@ -694,7 +694,7 @@
                     "add": 5,
                     "mult": 10
                 },
-                "damage": {
+                "damage bonus": {
                     "add": 1
                 },
                 "weight": {

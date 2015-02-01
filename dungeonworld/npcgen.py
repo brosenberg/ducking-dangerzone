@@ -11,6 +11,7 @@ class NPCGenerator(object):
 
     def __str__(self):
         return """%s %s the %s %s %s whose desire is %s.
+Their special knack is %s.
 Skills: %s
 Salary: %s""" % (self.first_name,
         self.last_name,
@@ -18,6 +19,7 @@ Salary: %s""" % (self.first_name,
         self.race,
         self.profession,
         self.goal,
+        self.knack,
         "  ".join(["%s: %s" % (x, self.skills[x]) for x in self.skills]),
         self.salary)
 
@@ -26,12 +28,14 @@ Salary: %s""" % (self.first_name,
         self.race = random.choice(self.json["race"])
         self.goal = random.choice(self.json["goal"])
         self.profession = random.choice(self.json["skills"].keys())
-        self.item = random.choice(self.json["skills"][self.profession])
+        self.inventory = [random.choice(self.json["skills"][self.profession])]
+        self.knack = random.choice(self.json["knacks"])
         self.first_name = random.choice(self.json["%s %s first name" % (self.race, self.gender)])
         self.last_name = random.choice(self.json["%s last name" % (self.race,)])
 
         skill_points = random.randint(2, 10)
         self.salary = int(random.uniform(0.75, 4) * skill_points)
+
         loyalty_max = skill_points-1 if skill_points-1<=4 else 4
         self.skills = { "Loyalty": random.randint(-1, loyalty_max) }
         skill_points -= self.skills["Loyalty"]+1
@@ -69,5 +73,5 @@ if __name__ == "__main__":
         itemgen.print_items(shield)
     print
     print "Inventory:"
-    print npc.item
+    print "\n".join(npc.inventory)
     print '-'*80
