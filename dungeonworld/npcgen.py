@@ -11,7 +11,7 @@ class NPCGenerator(object):
 
     def __str__(self):
         return """%s %s is a %s %s %s whose desire is %s.
-%s has %s %s eyes, and %s skin covering their %s body.
+%s has %s %s eyes, %s %s hair, and %s skin covering %s %s body.
 Their special knack is %s.
 
 Hitpoints: %s
@@ -37,7 +37,10 @@ Inventory:
         self.first_name,
         self.eye_type,
         self.eye_color,
+        self.hair_style,
+        self.hair_color,
         self.skin,
+        "her" if self.gender == "female" else "his",
         self.build,
         self.knack,
         self.hitpoints,
