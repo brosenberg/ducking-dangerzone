@@ -62,7 +62,7 @@
         },
         "wood": {
             "Ironwood": {
-                "armor": {
+                "armor bonus": {
                     "add": 1
                 },
                 "coins": {
@@ -77,7 +77,7 @@
                 }
             },
             "Myrnith": {
-                "armor": {
+                "armor bonus": {
                     "add": 1
                 },
                 "coins": {

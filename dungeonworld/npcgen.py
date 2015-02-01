@@ -98,19 +98,19 @@ Inventory:
     def equip_thyself(self, weapongen, armorgen, shieldgen):
         one_handed = lambda x: not "two-handed" in x[0].data['tags'] and x[0].data['_meta']['type'] == "melee"
 
-        self.armor = armorgen.generate()
-        self.wielding = weapongen.generate()
+        self.armor = armorgen.generate(mod_chance=10+self.wealth)
+        self.wielding = weapongen.generate(mod_chance=10+self.wealth)
         # See if the weapon is a one handed melee weapon
         if one_handed(self.wielding):
             roll = random.randint(0,4)
             if roll == 4:
-                offhand = weapongen.generate()
+                offhand = weapongen.generate(mod_chance=10+self.wealth)
                 # FIXME: This is awful. ItemGenerator should be able to do this automatically.
                 while not one_handed(offhand):
-                    offhand = weapongen.generate()
+                    offhand = weapongen.generate(mod_chance=10+self.wealth)
                 self.wielding += offhand
             elif roll:
-                self.wielding += shieldgen.generate()
+                self.wielding += shieldgen.generate(mod_chance=10+self.wealth)
 
     def spend_wealth(self, generators, coin_chance=60):
         while self.wealth:
