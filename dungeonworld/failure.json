@@ -1,0 +1,19 @@
+{
+    "Roll Failure": [
+        "Have a new danger replace the old",
+        "The danger is avoided momentarily, but increases somehow (more enemies or increasing risk)",
+        "Successful action, but unintended effect (it enrages the enemy instead of scaring them, for example)",
+        "Threaten an ally instead",
+        "Make them give up something: money, equipment, a good position",
+        "Two options, each with benefits and drawbacks",
+        "Damage something important to the players (equipment, support beam, hiding spot, reputation, etc)",
+        "Embarrass them with a mishap",
+        "They’re targeted by a new enemy",
+        "Stumble, lose their footing, or drop an item",
+        "Change their location or positioning, for the worse",
+        "Miss something important (a detail, hazard, skulking enemy, or change of circumstance)",
+        "Add a new environmental hazard (fire, smoke, breaking supports, rock shards, flooding, etc)",
+        "Angered diety, NPC, or monster",
+        "They're off-balance, confused, or in a bad position, take -1forward."
+    ]
+}
