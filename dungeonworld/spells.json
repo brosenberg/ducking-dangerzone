@@ -1,0 +1,267 @@
+{
+    "spell": {
+        "Light": {
+            "level": 0,
+            "class": "wizard"
+        },
+        "Unseen Servant": {
+            "level": 0,
+            "class": "wizard"
+        },
+        "Prestidigitation": {
+            "level": 0,
+            "class": "wizard"
+
+        },
+        "Contact Spirits": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Detect Magic": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Telepathy": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Charm Person": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Invsibility": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Magic Missile": {
+            "level": 1,
+            "class": "wizard"
+        },
+        "Alarm": {
+            "level": 1,
+            "class": "wizard"
+
+        },
+        "Dispel Magic": {
+            "level": 3,
+            "class": "wizard"
+        },
+        "Visions Through Time": {
+            "level": 3,
+            "class": "wizard"
+        },
+        "Fireball": {
+            "level": 3,
+            "class": "wizard"
+        },
+        "Mimic": {
+            "level": 3,
+            "class": "wizard"
+        },
+        "Mirror Image": {
+            "level": 3,
+            "class": "wizard"
+        },
+        "Sleep": {
+            "level": 3,
+            "class": "wizard"
+
+        },
+        "Cage": {
+            "level": 5,
+            "class": "wizard"
+        },
+        "Contact Other Plane": {
+            "level": 5,
+            "class": "wizard"
+        },
+        "Polymorph": {
+            "level": 5,
+            "class": "wizard"
+        },
+        "Summon Monster": {
+            "level": 5,
+            "class": "wizard"
+
+        },
+        "Dominate": {
+            "level": 7,
+            "class": "wizard"
+        },
+        "True Seeing": {
+            "level": 7,
+            "class": "wizard"
+        },
+        "Shadow Walk": {
+            "level": 7,
+            "class": "wizard"
+        },
+        "Contingency": {
+            "level": 7,
+            "class": "wizard"
+        },
+        "Cloudkill": {
+            "level": 7,
+            "class": "wizard"
+
+        },
+        "Antipathy": {
+            "level": 9,
+            "class": "wizard"
+        },
+        "Alert": {
+            "level": 9,
+            "class": "wizard"
+        },
+        "Soul Gem": {
+            "level": 9,
+            "class": "wizard"
+        },
+        "Shelter": {
+            "level": 9,
+            "class": "wizard"
+        },
+        "Perfect Summons": {
+            "level": 9,
+            "class": "wizard"
+
+        },
+        "Light": {
+            "level": 0,
+            "class": "cleric"
+        },
+        "Sanctify": {
+            "level": 0,
+            "class": "cleric"
+        },
+        "Guidance": {
+            "level": 0,
+            "class": "cleric"
+
+        },
+        "Bless": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Cure Light Wounds": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Detect Alignment": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Cause Fear": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Magic Weapon": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Sanctuary": {
+            "level": 1,
+            "class": "cleric"
+        },
+        "Speak With Dead": {
+            "level": 1,
+            "class": "cleric"
+
+        },
+        "Animate Dead": {
+            "level": 3,
+            "class": "cleric"
+        },
+        "Cure Moderate Wounds": {
+            "level": 3,
+            "class": "cleric"
+        },
+        "Darkness": {
+            "level": 3,
+            "class": "cleric"
+        },
+        "Resurrection": {
+            "level": 3,
+            "class": "cleric"
+        },
+        "Hold Person": {
+            "level": 3,
+            "class": "cleric"
+
+        },
+        "Revelation": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "Cure Critical Wounds": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "Divination": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "Contagion": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "Words of the Unspeaking": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "True Seeing": {
+            "level": 5,
+            "class": "cleric"
+        },
+        "Trap Soul": {
+            "level": 5,
+            "class": "cleric"
+
+        },
+        "Word of Recall": {
+            "level": 7,
+            "class": "cleric"
+        },
+        "Heal": {
+            "level": 7,
+            "class": "cleric"
+        },
+        "Harm": {
+            "level": 7,
+            "class": "cleric"
+        },
+        "Sever": {
+            "level": 7,
+            "class": "cleric"
+        },
+        "Mark of Death": {
+            "level": 7,
+            "class": "cleric"
+        },
+        "Control Weather": {
+            "level": 7,
+            "class": "cleric"
+
+        },
+        "Storm of Vengeance": {
+            "level": 9,
+            "class": "cleric"
+        },
+        "Repair": {
+            "level": 9,
+            "class": "cleric"
+        },
+        "Divine Presence": {
+            "level": 9,
+            "class": "cleric"
+        },
+        "Consume Unlife": {
+            "level": 9,
+            "class": "cleric"
+        },
+        "Plague": {
+            "level": 9,
+            "class": "cleric"
+        }
+    }
+}
