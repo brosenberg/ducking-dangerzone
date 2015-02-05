@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import copy
 import json
 import random
 
@@ -61,49 +62,66 @@ class Item(object):
 
 
 class ItemGenerator(object):
-    def __init__(self, json_file):
+    def __init__(self, json_file, mods=True):
         self.json = json.load(open(json_file))
+        if mods and not "mods" in self.json.keys():
+            mods = False
+        self.mods = mods
 
-    def random_item(self, item_list="items"):
-        item = random.choice(self.json[item_list].keys())
+    # filters is list of a tuples of (key, value) where only things in the 
+    # list that contain the key 'key' with value 'value' will be chosen from.
+    def random_item(self, item_list="items", filters=None):
+        random_list = copy.deepcopy(self.json[item_list])
+        if filters:
+            for filter_key, filter_value in filters:
+                for key in random_list.keys():
+                    if random_list[key].get(filter_key) != filter_value:
+                        try:
+                            del random_list[key]
+                        except KeyError:
+                            pass
+        item = random.choice(random_list.keys())
         item_data = self.json[item_list][item]
         return (item, item_data)
 
-    def generate(self, item_list="items", mod_chance=10):
-        item = Item(*self.random_item(item_list=item_list))
+    def generate(self, item_list="items", mod_chance=10, filters=None):
+        item = Item(*self.random_item(item_list=item_list, filters=filters))
 
-        mod_roll = random.randint(1, 100)
-        if mod_roll <= mod_chance:
-            try:
-                mod, mod_data = self.random_mod(item.index_name, item_list=item_list)
-                item.mod(mod, mod_data)
-            except NoModsFound:
-                pass
+        if self.mods:
+            mod_roll = random.randint(1, 100)
+            if mod_roll <= mod_chance:
+                try:
+                    mod, mod_data = self.random_mod(item.index_name, item_list=item_list)
+                    item.mod(mod, mod_data)
+                except NoModsFound:
+                    pass
 
-        gen_list = self.json[item_list][item.index_name]["_meta"].get("generate")
-        if gen_list:
-            items = [item]
+        if "_meta" in self.json[item_list][item.index_name].keys():
+            gen_list = self.json[item_list][item.index_name]["_meta"].get("generate")
             if gen_list:
-                for gen in gen_list:
-                    try:
-                        for new_item in self.generate(item_list=gen, mod_chance=mod_chance):
-                            items.append(new_item)
-                    except KeyError:
-                        print "Failed to generate %s for %s" % (gen, item.name)
-            return items
+                items = [item]
+                if gen_list:
+                    for gen in gen_list:
+                        try:
+                            for new_item in self.generate(item_list=gen, mod_chance=mod_chance):
+                                items.append(new_item)
+                        except KeyError:
+                            print "Failed to generate %s for %s" % (gen, item.name)
+                return items
 
         return [item]
 
     def random_mod(self, item, item_list="items"):
         mod_list = self.json["mods"]["general"]
 
-        for meta in self.json[item_list][item]["_meta"].values():
-            if type(meta) is list:
-                continue
-            try:
-                mod_list.update(self.json["mods"][meta])
-            except KeyError:
-                pass
+        if "_meta" in self.json[item_list][item].keys():
+            for meta in self.json[item_list][item]["_meta"].values():
+                if type(meta) is list:
+                    continue
+                try:
+                    mod_list.update(self.json["mods"][meta])
+                except KeyError:
+                    pass
         if len(mod_list.keys()) == 0:
             raise NoModsFound
         mod = random.choice(mod_list.keys())
@@ -117,6 +135,7 @@ if __name__ == "__main__":
     weapons = ItemGenerator("weapons.json")
     shield = ItemGenerator("shields.json")
     gear = ItemGenerator("gear.json")
+    magic = ItemGenerator("magic.json")
 
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )
@@ -128,3 +147,7 @@ if __name__ == "__main__":
     print_items( shield.generate(mod_chance=100) )
     print "-- Random Gear --"
     print_items( gear.generate(mod_chance=100) )
+    print "-- Random Spell --"
+    print_items( magic.generate(item_list="spells") )
+    print "-- Random Level 5 Wizard Spell--"
+    print_items( magic.generate(item_list="spells", filters=[("class", "wizard"), ("level", 5)]) )

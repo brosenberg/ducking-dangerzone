@@ -1,5 +1,5 @@
 {
-    "spell": {
+    "spells": {
         "Light": {
             "level": 0,
             "class": "wizard"
@@ -263,5 +263,19 @@
             "level": 9,
             "class": "cleric"
         }
+    },
+    "corruption": {
+        "minor": {
+            "pustules": {
+                "desc": "You develop horrid pustules on your face, which do not heal and cause -1 Charisma"
+            },
+            "melting skin": {
+                "desc": "A portion of your skin begins to melt like wax"
+            }
+        },
+        "major": {
+        },
+        "greater": [
+        ]
     }
 }
