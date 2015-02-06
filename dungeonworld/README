@@ -1,6 +1,9 @@
 itemgen.py consumes a JSON blob full of items and mods. The shields.json file is the simplest example.
 npcgen.py is a mess of special cases which consumes a JSON blob full of random NPC things. npc.json is the only example file.
 
+TODO:
+o The filtering in itemgen.py is horrible. Fix it.
+
 
 Elf, Dwarf, Halfling, Human first names from Dungeon World
 Elf surnames from: http://www.candlekeep.com/library/articles/elven_names.htm
