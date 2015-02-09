@@ -139,15 +139,23 @@ if __name__ == "__main__":
 
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )
+    print
+
     print "-- Random Weapon --"
     print_items( weapons.generate(mod_chance=100) )
+    print
+
     print "-- Random Bow Ammo --"
     print_items( weapons.generate(item_list="ammo:bow", mod_chance=100) )
+    print
+
     print "-- Random Shield --"
     print_items( shield.generate(mod_chance=100) )
+    print
+
     print "-- Random Gear --"
     print_items( gear.generate(mod_chance=100) )
+    print
+
     print "-- Random Spell --"
     print_items( magic.generate(item_list="spells") )
-    print "-- Random Level 5 Wizard Spell--"
-    print_items( magic.generate(item_list="spells", filters=[("class", "wizard"), ("level", 5)]) )

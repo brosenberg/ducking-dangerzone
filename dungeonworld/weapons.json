@@ -296,6 +296,16 @@
                 "type": "melee"
             }
         },
+        "Arming Sword": {
+            "tags": ["close"],
+            "damage bonus": 1,
+            "coins": 15,
+            "weight": 2,
+            "_meta": {
+                "material": "metal",
+                "type": "melee"
+            }
+        },
         "Broad Sword": {
             "tags": ["close"],
             "damage bonus": 1,
