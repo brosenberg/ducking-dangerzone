@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import copy
 import json
 import random
 
@@ -107,7 +106,7 @@ class ItemGenerator(object):
             for keys, test in filters:
                 random_list.update(filter_items(self.json[item_list], keys, test))
         else:
-            random_list = copy.deepcopy(self.json[item_list])
+            random_list = self.json[item_list]
         item = random.choice(random_list.keys())
         item_data = self.json[item_list][item]
         return (item, item_data)
