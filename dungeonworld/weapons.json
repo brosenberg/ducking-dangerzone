@@ -106,6 +106,15 @@
                 "type": "melee"
             }
         },
+        "Godendag": {
+            "tags": ["close", "two-handed"],
+            "coins": 1,
+            "weight": 1,
+            "_meta": {
+                "material": "wood",
+                "type": "melee"
+            }
+        },
         "Katar": {
             "tags": ["hand"],
             "coins": 2,
@@ -260,8 +269,9 @@
             }
         },
         "Boar Spear": {
-            "tags": ["reach", "thrown", "near"],
-            "coins": 5,
+            "tags": ["reach", "near", "two-handed"],
+            "damage bonus": 1,
+            "coins": 7,
             "weight": 1,
             "_meta": {
                 "material": "metal",
@@ -270,16 +280,7 @@
         },
         "Trident": {
             "tags": ["reach", "thrown", "near"],
-            "coins": 5,
-            "weight": 1,
-            "_meta": {
-                "material": "metal",
-                "type": "melee"
-            }
-        },
-        "Godendag": {
-            "tags": ["reach", "near"],
-            "coins": 4,
+            "coins": 7,
             "weight": 1,
             "_meta": {
                 "material": "metal",

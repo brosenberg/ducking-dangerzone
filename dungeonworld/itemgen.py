@@ -14,6 +14,39 @@ def print_items(items):
     for item in items:
         print item
 
+def filter_item(items, item, keys, test):
+    item_value = items[item]
+    for key in keys:
+        item_value = item_value[key]
+    if test['type'] == 'gt':
+        if item_value > test['value']:
+            return {item: items[item]}
+    elif test['type'] == 'lt':
+        if item_value < test['value']:
+            return {item: items[item]}
+    elif test['type'] == 'eq':
+        if item_value == test['value']:
+            return {item: items[item]}
+    elif test['type'] == 'ne':
+        if item_value != test['value']:
+            return {item: items[item]}
+    elif test['type'] == 'in':
+        if test['value'] in item_value:
+            return {item: items[item]}
+    elif test['type'] == 'not in':
+        if not test['value'] in item_value:
+            return {item: items[item]}
+    return None
+
+def filter_items(items, keys, test):
+    filtered = {}
+    for item in items:
+        try:
+            filtered.update(filter_item(items, item, keys, test))
+        except TypeError:
+            pass
+    return filtered
+
 class NoModsFound(Exception):
     pass
 
@@ -68,18 +101,13 @@ class ItemGenerator(object):
             mods = False
         self.mods = mods
 
-    # filters is list of a tuples of (key, value) where only things in the 
-    # list that contain the key 'key' with value 'value' will be chosen from.
     def random_item(self, item_list="items", filters=None):
-        random_list = copy.deepcopy(self.json[item_list])
+        random_list = {}
         if filters:
-            for filter_key, filter_value in filters:
-                for key in random_list.keys():
-                    if random_list[key].get(filter_key) != filter_value:
-                        try:
-                            del random_list[key]
-                        except KeyError:
-                            pass
+            for keys, test in filters:
+                random_list.update(filter_items(self.json[item_list], keys, test))
+        else:
+            random_list = copy.deepcopy(self.json[item_list])
         item = random.choice(random_list.keys())
         item_data = self.json[item_list][item]
         return (item, item_data)
@@ -159,3 +187,15 @@ if __name__ == "__main__":
 
     print "-- Random Spell --"
     print_items( magic.generate(item_list="spells") )
+    print
+
+    spell_filter = [(['level'], {'type': 'gt', 'value': 5})]
+    print "-- Random Spell Greater than level 5 --"
+    print_items( magic.generate(item_list="spells", filters=spell_filter) )
+    print
+
+    onehand_filter = [(['tags'], {'type': 'not in', 'value': 'two-handed'}),
+                      (['_meta', 'type'], {'type': 'eq', 'value': 'melee'})]
+    print "-- Random One-handed Weapon --"
+    print_items( weapons.generate(mod_chance=100, filters=onehand_filter) )
+    print

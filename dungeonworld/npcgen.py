@@ -107,11 +107,9 @@ Inventory:
         if one_handed(self.wielding):
             roll = random.randint(0,4)
             if roll == 4:
-                offhand = weapongen.generate(mod_chance=10+self.wealth)
-                # FIXME: This is awful. ItemGenerator should be able to do this automatically.
-                while not one_handed(offhand):
-                    offhand = weapongen.generate(mod_chance=10+self.wealth)
-                self.wielding += offhand
+                onehand_filter = [(['tags'], {'type': 'not in', 'value': 'two-handed'}),
+                                  (['_meta', 'type'], {'type': 'eq', 'value': 'melee'})]
+                self.wielding += weapongen.generate(mod_chance=10+self.wealth, filters=onehand_filter)
             elif roll:
                 self.wielding += shieldgen.generate(mod_chance=10+self.wealth)
 
