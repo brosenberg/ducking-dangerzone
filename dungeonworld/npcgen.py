@@ -82,7 +82,7 @@ Inventory:
         self.wealth = int(random.triangular(0, 10, skill_points))
         self.coins = 0
 
-        self.spells = []
+        self.spells = set()
 
         loyalty_max = skill_points-1 if skill_points-1<=4 else 4
         self.skills = { "Loyalty": random.randint(-1, loyalty_max) }
@@ -133,14 +133,17 @@ Inventory:
 
         def _learn_spells(skill, skill_filter):
             if skill in self.skills:
-                for level in range(0, self.skills[skill]):
-                    level_filter = [(['level'], {'type': 'lte', 'value': level})]
+                spell_levels = self.skills[skill]
+                while spell_levels:
+                    level_filter = [(['level'], {'type': 'lte', 'value': spell_levels})]
                     spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
                     # FIXME: The filtering system should be able to do this
-                    while spells[0] in self.spells:
+                    # This is ensuring that the spells in the list are unique
+                    while set(spells).intersection(self.spells):
                         spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
                     for spell in spells:
-                        self.spells.append(str(spell))
+                        self.spells.add(str(spell))
+                        spell_levels -= spell.data['level']
 
         adept_filter = [(['class'], {'type': 'eq', 'value': 'wizard'})]
         priest_filter = [(['class'], {'type': 'eq', 'value': 'cleric'})]

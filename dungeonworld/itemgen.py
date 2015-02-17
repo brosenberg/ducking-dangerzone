@@ -168,6 +168,7 @@ if __name__ == "__main__":
     shield = ItemGenerator("shields.json")
     gear = ItemGenerator("gear.json")
     magic = ItemGenerator("spells.json")
+    magic_items = ItemGenerator("magic_items.json")
 
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )
@@ -194,7 +195,7 @@ if __name__ == "__main__":
     print
 
     spell_filter = [(['level'], {'type': 'eq', 'value': 5}), (['class'], {'type': 'eq', 'value': 'wizard'})]
-    print "-- Random Level 5 Wizard Spell--"
+    print "-- Random Level 5 Wizard Spell --"
     print_items( magic.generate(item_list="spells", filters=spell_filter) )
     print
 
@@ -202,4 +203,8 @@ if __name__ == "__main__":
                       (['_meta', 'type'], {'type': 'eq', 'value': 'melee'})]
     print "-- Random One-handed Weapon --"
     print_items( weapons.generate(mod_chance=100, filters=onehand_filter) )
+    print
+
+    print "-- Random Magic Item --"
+    print_items( magic_items.generate() )
     print
