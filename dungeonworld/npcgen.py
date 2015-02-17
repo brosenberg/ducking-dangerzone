@@ -28,6 +28,9 @@ Wielding:
 %s
 
 Inventory:
+%s
+
+Spells:
 %s""" % (self.first_name,
         self.last_name,
         self.gender,
@@ -50,7 +53,8 @@ Inventory:
         self.salary,
         "\n".join([str(x) for x in self.armor]),
         "\n".join([str(x) for x in self.wielding]),
-        "\n".join(self.inventory))
+        "\n".join(self.inventory),
+        "\n".join([str(x) for x in self.spells]))
 
     def generate(self):
         self.gender = random.choice(self.json["gender"])
@@ -77,6 +81,8 @@ Inventory:
         self.hitpoints = int(random.uniform(1.25, 2.25) * skill_points)
         self.wealth = int(random.triangular(0, 10, skill_points))
         self.coins = 0
+
+        self.spells = []
 
         loyalty_max = skill_points-1 if skill_points-1<=4 else 4
         self.skills = { "Loyalty": random.randint(-1, loyalty_max) }
@@ -123,15 +129,37 @@ Inventory:
                     self.inventory.append(str(item))
             self.wealth -= 1
 
+    def learn_spells(self, magicgen):
+
+        def _learn_spells(skill, skill_filter):
+            if skill in self.skills:
+                for level in range(0, self.skills[skill]):
+                    level_filter = [(['level'], {'type': 'lte', 'value': level})]
+                    print skill_filter+level_filter
+                    spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
+                    # FIXME: The filtering system should be able to do this
+                    while spells[0] in self.spells:
+                        spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
+                    for spell in spells:
+                        self.spells.append(str(spell))
+
+        adept_filter = [(['class'], {'type': 'eq', 'value': 'wizard'})]
+        priest_filter = [(['class'], {'type': 'eq', 'value': 'cleric'})]
+        for skill, skill_filter in [('Adept', adept_filter), ('Priest', priest_filter)]:
+            _learn_spells(skill, skill_filter)
+
+
 if __name__ == "__main__":
     npc = NPCGenerator()
     armorgen = itemgen.ItemGenerator("armor.json")
     weapongen = itemgen.ItemGenerator("weapons.json")
     shieldgen = itemgen.ItemGenerator("shields.json")
     geargen = itemgen.ItemGenerator("gear.json")
+    magicgen = itemgen.ItemGenerator("magic.json")
 
     npc.equip_thyself(weapongen, armorgen, shieldgen)
     npc.spend_wealth([weapongen, geargen])
+    npc.learn_spells(magicgen)
 
     print '-'*80
     print npc

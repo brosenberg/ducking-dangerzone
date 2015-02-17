@@ -20,8 +20,14 @@ def filter_item(items, item, keys, test):
     if test['type'] == 'gt':
         if item_value > test['value']:
             return {item: items[item]}
+    elif test['type'] == 'gte':
+        if item_value >= test['value']:
+            return {item: items[item]}
     elif test['type'] == 'lt':
         if item_value < test['value']:
+            return {item: items[item]}
+    elif test['type'] == 'lte':
+        if item_value <= test['value']:
             return {item: items[item]}
     elif test['type'] == 'eq':
         if item_value == test['value']:
@@ -37,6 +43,7 @@ def filter_item(items, item, keys, test):
             return {item: items[item]}
     return None
 
+#FIXME: This is OR'ing the sets together, not AND'ing them.
 def filter_items(items, keys, test):
     filtered = {}
     for item in items:
@@ -101,12 +108,10 @@ class ItemGenerator(object):
         self.mods = mods
 
     def random_item(self, item_list="items", filters=None):
-        random_list = {}
+        random_list = self.json[item_list]
         if filters:
             for keys, test in filters:
-                random_list.update(filter_items(self.json[item_list], keys, test))
-        else:
-            random_list = self.json[item_list]
+                random_list = filter_items(random_list, keys, test)
         item = random.choice(random_list.keys())
         item_data = self.json[item_list][item]
         return (item, item_data)
@@ -188,8 +193,8 @@ if __name__ == "__main__":
     print_items( magic.generate(item_list="spells") )
     print
 
-    spell_filter = [(['level'], {'type': 'gt', 'value': 5})]
-    print "-- Random Spell Greater than level 5 --"
+    spell_filter = [(['level'], {'type': 'eq', 'value': 5}), (['class'], {'type': 'eq', 'value': 'wizard'})]
+    print "-- Random Level 5 Wizard Spell--"
     print_items( magic.generate(item_list="spells", filters=spell_filter) )
     print
 
