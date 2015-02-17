@@ -3,6 +3,7 @@
 import itemgen
 import json
 import random
+import scrolls
 
 class NPCGenerator(object):
     def __init__(self, json_file="npc.json", mod_chance=10):
@@ -130,7 +131,6 @@ Inventory:
             self.wealth -= 1
 
     def learn_spells(self, magicgen):
-
         def _learn_spells(skill, skill_filter):
             if skill in self.skills:
                 spell_levels = self.skills[skill]
@@ -158,9 +158,10 @@ if __name__ == "__main__":
     shieldgen = itemgen.ItemGenerator("shields.json")
     geargen = itemgen.ItemGenerator("gear.json")
     magicgen = itemgen.ItemGenerator("spells.json")
+    scrollgen = scrolls.Scroll(magicgen)
 
     npc.equip_thyself(weapongen, armorgen, shieldgen)
-    npc.spend_wealth([weapongen, geargen])
+    npc.spend_wealth([weapongen, geargen, scrollgen])
     npc.learn_spells(magicgen)
 
     print '-'*80
