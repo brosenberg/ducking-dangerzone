@@ -138,7 +138,7 @@ Inventory:
                     level_filter = [(['level'], {'type': 'lte', 'value': spell_levels})]
                     spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
                     # FIXME: The filtering system should be able to do this
-                    # This is ensuring that the spells in the list are unique
+                    # This could also loop forever if the data was bad. That's cool.
                     while set(spells).intersection(self.spells):
                         spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
                     for spell in spells:

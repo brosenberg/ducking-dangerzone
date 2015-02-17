@@ -3,17 +3,28 @@
 import itemgen
 import random
 
-if __name__ == '__main__':
-    magic = itemgen.ItemGenerator("spells.json")
-    scroll_level = int(random.triangular(1, 18, 1))
-    scroll_type = random.choice(["cleric", "wizard"])
-    scroll_spells = []
-    print "Level %s %s scroll containing the following spells:" % (scroll_level, scroll_type)
-    while scroll_level:
-        [spell] = magic.generate(item_list="spells", filters=[("class", scroll_type)])
-        while spell.data["level"] > scroll_level:
-            [spell] = magic.generate(item_list="spells", filters=[("class", scroll_type)])
-        scroll_level -= spell.data["level"]
-        scroll_spells.append(spell)
+class Scroll(object):
+    def __init__(self, spellgen, max_level=18):
+        self.level = int(random.triangular(1, max_level, 1))
+        self.type = random.choice(["cleric", "wizard"])
+        self.spells = []
+        scroll_level = self.level
+        spell_filter = (['class'], {'type': 'eq', 'value': self.type})
+        while scroll_level:
+            [spell] = spellgen.generate(item_list="spells", filters=[spell_filter])
+            while spell.data["level"] > scroll_level:
+                [spell] = spellgen.generate(item_list="spells", filters=[spell_filter])
+            scroll_level -= spell.data["level"]
+            self.spells.append(spell)
 
-    itemgen.print_items(scroll_spells)
+    def __str__(self):
+        return """Level %s %s scroll containing the following spells:
+\t%s""" % (self.level,
+           self.type,
+           "\n\t".join([str(x) for x in self.spells]))
+
+
+if __name__ == '__main__':
+    spellgen = itemgen.ItemGenerator("spells.json")
+    scroll = Scroll(spellgen)
+    print scroll
