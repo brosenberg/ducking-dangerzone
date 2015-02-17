@@ -10,6 +10,9 @@ class NPCGenerator(object):
         self.generate()
 
     def __str__(self):
+        spells = ""
+        if self.spells:
+            spells = "\nSpells:\n%s" % ("\n".join([str(x) for x in self.spells]),)
         return """%s %s is a %s %s %s whose desire is %s.
 %s has %s %s eyes, %s %s hair, and %s skin covering %s %s body.
 Their special knack is %s.
@@ -28,10 +31,7 @@ Wielding:
 %s
 
 Inventory:
-%s
-
-Spells:
-%s""" % (self.first_name,
+%s%s""" % (self.first_name,
         self.last_name,
         self.gender,
         self.race,
@@ -54,7 +54,7 @@ Spells:
         "\n".join([str(x) for x in self.armor]),
         "\n".join([str(x) for x in self.wielding]),
         "\n".join(self.inventory),
-        "\n".join([str(x) for x in self.spells]))
+        spells)
 
     def generate(self):
         self.gender = random.choice(self.json["gender"])
@@ -135,7 +135,6 @@ Spells:
             if skill in self.skills:
                 for level in range(0, self.skills[skill]):
                     level_filter = [(['level'], {'type': 'lte', 'value': level})]
-                    print skill_filter+level_filter
                     spells = magicgen.generate(item_list="spells", filters=skill_filter+level_filter)
                     # FIXME: The filtering system should be able to do this
                     while spells[0] in self.spells:
