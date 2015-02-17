@@ -4,7 +4,7 @@ import itemgen
 import random
 
 if __name__ == '__main__':
-    magic = itemgen.ItemGenerator("magic.json")
+    magic = itemgen.ItemGenerator("spells.json")
     scroll_level = int(random.triangular(1, 18, 1))
     scroll_type = random.choice(["cleric", "wizard"])
     scroll_spells = []

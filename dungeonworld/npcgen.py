@@ -12,7 +12,7 @@ class NPCGenerator(object):
     def __str__(self):
         spells = ""
         if self.spells:
-            spells = "\nSpells:\n%s" % ("\n".join([str(x) for x in self.spells]),)
+            spells = "\n\nSpells:\n%s" % ("\n".join([str(x) for x in self.spells]),)
         return """%s %s is a %s %s %s whose desire is %s.
 %s has %s %s eyes, %s %s hair, and %s skin covering %s %s body.
 Their special knack is %s.
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     weapongen = itemgen.ItemGenerator("weapons.json")
     shieldgen = itemgen.ItemGenerator("shields.json")
     geargen = itemgen.ItemGenerator("gear.json")
-    magicgen = itemgen.ItemGenerator("magic.json")
+    magicgen = itemgen.ItemGenerator("spells.json")
 
     npc.equip_thyself(weapongen, armorgen, shieldgen)
     npc.spend_wealth([weapongen, geargen])

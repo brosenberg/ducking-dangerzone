@@ -167,7 +167,7 @@ if __name__ == "__main__":
     weapons = ItemGenerator("weapons.json")
     shield = ItemGenerator("shields.json")
     gear = ItemGenerator("gear.json")
-    magic = ItemGenerator("magic.json")
+    magic = ItemGenerator("spells.json")
 
     print "-- Random Armor --"
     print_items( armor.generate(mod_chance=100) )

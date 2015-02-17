@@ -1,6 +1,6 @@
 {
     "spells": {
-        "Light": {
+        "Light (arcane)": {
             "level": 0,
             "class": "wizard"
         },
@@ -11,8 +11,8 @@
         "Prestidigitation": {
             "level": 0,
             "class": "wizard"
-
         },
+
         "Contact Spirits": {
             "level": 1,
             "class": "wizard"
@@ -40,8 +40,8 @@
         "Alarm": {
             "level": 1,
             "class": "wizard"
-
         },
+
         "Dispel Magic": {
             "level": 3,
             "class": "wizard"
@@ -65,8 +65,8 @@
         "Sleep": {
             "level": 3,
             "class": "wizard"
-
         },
+
         "Cage": {
             "level": 5,
             "class": "wizard"
@@ -82,8 +82,8 @@
         "Summon Monster": {
             "level": 5,
             "class": "wizard"
-
         },
+
         "Dominate": {
             "level": 7,
             "class": "wizard"
@@ -103,8 +103,8 @@
         "Cloudkill": {
             "level": 7,
             "class": "wizard"
-
         },
+
         "Antipathy": {
             "level": 9,
             "class": "wizard"
@@ -124,9 +124,9 @@
         "Perfect Summons": {
             "level": 9,
             "class": "wizard"
-
         },
-        "Light": {
+
+        "Light (divine)": {
             "level": 0,
             "class": "cleric"
         },
@@ -137,8 +137,8 @@
         "Guidance": {
             "level": 0,
             "class": "cleric"
-
         },
+
         "Bless": {
             "level": 1,
             "class": "cleric"
@@ -166,8 +166,8 @@
         "Speak With Dead": {
             "level": 1,
             "class": "cleric"
-
         },
+
         "Animate Dead": {
             "level": 3,
             "class": "cleric"
@@ -187,8 +187,8 @@
         "Hold Person": {
             "level": 3,
             "class": "cleric"
-
         },
+
         "Revelation": {
             "level": 5,
             "class": "cleric"
@@ -216,8 +216,8 @@
         "Trap Soul": {
             "level": 5,
             "class": "cleric"
-
         },
+
         "Word of Recall": {
             "level": 7,
             "class": "cleric"
@@ -241,8 +241,8 @@
         "Control Weather": {
             "level": 7,
             "class": "cleric"
-
         },
+
         "Storm of Vengeance": {
             "level": 9,
             "class": "cleric"
