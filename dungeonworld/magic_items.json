@@ -1,7 +1,7 @@
 {
     "_comment": "This is intended to be consumed by itemgen.py's ItemGenerator",
     "items": {
-        "Periapt of Life": {
+        "Periapt of Proof Against Death": {
             "description": "+1 ongoing to last breath rolls",
             "weight": 0,
             "_meta": {

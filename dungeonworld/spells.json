@@ -1,6 +1,6 @@
 {
     "spells": {
-        "Light (arcane)": {
+        "Light, Arcane": {
             "level": 0,
             "class": "wizard"
         },
@@ -126,7 +126,7 @@
             "class": "wizard"
         },
 
-        "Light (divine)": {
+        "Light, Divine": {
             "level": 0,
             "class": "cleric"
         },

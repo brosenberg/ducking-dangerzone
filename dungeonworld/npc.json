@@ -48,14 +48,15 @@
         "bald",
         "balding",
         "cropped",
-        "long and braided",
-        "short and braided",
-        "long and curly",
-        "short and curly",
-        "long and wavy",
-        "short and wavy",
-        "long and straight",
-        "short and straight"
+        "wispy",
+        "long braided",
+        "short braided",
+        "long curly",
+        "short curly",
+        "long wavy",
+        "short wavy",
+        "long straight",
+        "short straight"
     ],
     "skin": [
         "pale",
