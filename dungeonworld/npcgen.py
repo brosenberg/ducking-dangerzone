@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import deities
 import itemgen
 import json
 import random
@@ -17,6 +18,7 @@ class NPCGenerator(object):
         return """%s %s is a %s %s %s whose desire is %s.
 %s has %s %s eyes, %s %s hair, and %s skin covering %s %s body.
 Their special knack is %s.
+The higher power they follow is %s.
 
 Hitpoints: %s
 Damage: %s
@@ -47,6 +49,7 @@ Inventory:
         "her" if self.gender == "female" else "his",
         self.build,
         self.knack,
+        self.deity,
         self.hitpoints,
         self.damage_die,
         "  ".join(["%s: %s" % (x, self.skills[x]) for x in self.skills]),
@@ -67,6 +70,7 @@ Inventory:
         ]
         self.damage_die = self.json["skills"][self.profession]["damage_die"]
         self.knack = random.choice(self.json["knacks"])
+        self.deity = "None"
         self.first_name = random.choice(self.json["%s %s first name" % (self.race, self.gender)])
         self.last_name = random.choice(self.json["%s last name" % (self.race,)])
 
@@ -150,6 +154,11 @@ Inventory:
         for skill, skill_filter in [('Adept', adept_filter), ('Priest', priest_filter)]:
             _learn_spells(skill, skill_filter)
 
+    def find_god(self, deitygen):
+        [self.deity] = deitygen.generate()
+        # FIXME: Use filters for this
+        while self.deity == "None" and "Priest" in self.skills:
+            [self.deity] = deitygen.generate()
 
 if __name__ == "__main__":
     npc = NPCGenerator()
@@ -159,10 +168,12 @@ if __name__ == "__main__":
     geargen = itemgen.ItemGenerator("gear.json")
     magicgen = itemgen.ItemGenerator("spells.json")
     scrollgen = scrolls.Scroll(magicgen)
+    deitygen = deities.DeityGenerator("gods.json")
 
     npc.equip_thyself(weapongen, armorgen, shieldgen)
     npc.spend_wealth([weapongen, geargen, scrollgen])
     npc.learn_spells(magicgen)
+    npc.find_god(deitygen)
 
     print '-'*80
     print npc

@@ -153,6 +153,16 @@
                 "type": "armor"
             }
         },
+        "Mail and Surcoat": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 50,
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
+        },
         "Full Chainmail": {
             "armor": 2,
             "tags": [ "clumsy" ],
@@ -213,6 +223,17 @@
                 "type": "armor"
             }
         },
+        "Piecemeal Platemail": {
+            "armor": 2,
+            "tags": [ "clumsy" ],
+            "coins": 150,
+            "weight": 3,
+            "_meta": {
+                "material": "metal",
+                "type": "armor"
+            }
+        },
+
         "Field Plate": {
             "armor": 3,
             "tags": [ "clumsy" ],
