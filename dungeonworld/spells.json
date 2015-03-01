@@ -75,6 +75,10 @@
             "level": 5,
             "class": "wizard"
         },
+        "Haste": {
+            "level": 5,
+            "class": "wizard"
+        },
         "Polymorph": {
             "level": 5,
             "class": "wizard"
