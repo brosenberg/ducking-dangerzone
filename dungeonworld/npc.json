@@ -9,21 +9,20 @@
         "dwarf",
         "halfling",
         "human",
-        "native"
+        "namarran"
     ],
     "eye type": [
-        "wise",
         "crazed",
+        "dead",
+        "eager",
+        "hard",
         "haunted",
         "kind",
         "knowing",
         "sad",
-        "hard",
-        "dead",
-        "eager",
-        "glowing",
+        "suspicious",
         "wild",
-        "suspicious"
+        "wise"
     ],
     "eye color": [
         "blue",
@@ -65,6 +64,7 @@
         "dark",
         "scarred",
         "tattooed",
+        "painted",
         "dirty"
     ],
     "build": [
@@ -568,7 +568,7 @@
         "West",
         "Finnegan"
     ],
-    "native female first name": [
+    "namarran female first name": [
         "Akbarasna",
         "Ansura",
         "Inema",
@@ -622,7 +622,7 @@
         "Yuza",
         "Zaratomma"
     ],
-    "native male first name": [
+    "namarran male first name": [
         "Aather",
         "Akban",
         "Inenrrre",
@@ -677,7 +677,7 @@
         "Yuathensal",
         "Zaarthec"
     ],
-    "native last name": [
+    "namarran last name": [
         "Athera-isumac",
         "Athera-orrin",
         "Athera-rastec",

@@ -16,7 +16,7 @@ class NPCGenerator(object):
         if self.spells:
             spells = "\n\nSpells:\n%s" % ("\n".join([str(x) for x in self.spells]),)
         return """%s %s is a %s %s %s whose desire is %s.
-%s has %s %s eyes, %s %s hair, and %s skin covering %s %s body.
+%s has %s %s eyes, %s, and %s skin covering %s %s body.
 Their special knack is %s.
 The higher power they follow is %s.
 
@@ -43,8 +43,7 @@ Inventory:
         self.first_name,
         self.eye_type,
         self.eye_color,
-        self.hair_style,
-        self.hair_color,
+        self.hair,
         self.skin,
         "her" if self.gender == "female" else "his",
         self.build,
@@ -76,8 +75,13 @@ Inventory:
 
         self.eye_type = random.choice(self.json["eye type"])
         self.eye_color = random.choice(self.json["eye color"])
-        self.hair_color = random.choice(self.json["hair color"])
         self.hair_style = random.choice(self.json["hair style"])
+        if self.hair_style == "bald":
+            self.hair_color = None
+            self.hair = "no hair"
+        else:
+            self.hair_color = random.choice(self.json["hair color"])
+            self.hair = "%s %s hair" % (self.hair_style, self.hair_color)
         self.skin = random.choice(self.json["skin"])
         self.build = random.choice(self.json["build"])
 

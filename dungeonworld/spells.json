@@ -54,6 +54,10 @@
             "level": 3,
             "class": "wizard"
         },
+        "Lightning Bolt": {
+            "level": 3,
+            "class": "wizard"
+        },
         "Mimic": {
             "level": 3,
             "class": "wizard"
