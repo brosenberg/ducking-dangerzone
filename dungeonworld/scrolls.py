@@ -9,9 +9,11 @@ class Scroll(object):
         self.generate(mod_chance=max_level)
 
     def __str__(self):
-        return """Level %s %s scroll containing the following spells:
+        return """Level %s %s scroll containing %s spell%s:
 \t%s""" % (self.level,
            self.type,
+           len(self.spells),
+           "s" if len(self.spells) > 1 else "",
            "\n\t".join([str(x) for x in self.spells]))
 
     # Provides the same interface as the other generators
